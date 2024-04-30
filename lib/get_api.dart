@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:mud_safety/get_gps.dart';
 
 class ApiReceive {
-  String getURL(double latitude, double longitude, int Date) {
+  String getURL(double? latitude, double? longitude, int Date) {
     const URL1 = 'http://www.khoa.go.kr/api/oceangrid/tideBedPre/search.do?ServiceKey=';
     const URL2 = '&Date=';
     const URL3 = '&ObsLon=';
@@ -14,7 +15,11 @@ class ApiReceive {
   }
 
   Future<void> getTide() async {
-    final request = Uri.parse(getURL(33.958, 128.3845, 20240430));
+    GpsReceive gpsReceive = GpsReceive();
+    Map<String, double> gpslocation = await gpsReceive.getLocation();
+
+    final request = Uri.parse(getURL(
+        gpslocation['latitude'], gpslocation['longitude'], 20240430));
     http.Response response = await http.get(request);
     if(response.statusCode == 200) {
       String jsonString = response.body;
