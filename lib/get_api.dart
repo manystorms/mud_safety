@@ -25,10 +25,12 @@ class ApiReceive {
       String jsonString = response.body;
       Map<String, dynamic> jsonData = jsonDecode(jsonString);
 
-      List<Map<String, dynamic>> dataList = (jsonData['data'] as List).cast<Map<String, dynamic>>();
+      List<Map<String, dynamic>?>? dataList = jsonData['data'] != null
+          ? (jsonData['data'] as List).cast<Map<String, dynamic>?>()
+          : null;
 
       Map<String, String> tideMap = {};
-      for (Map<String, dynamic>? item in dataList) {
+      for (Map<String, dynamic>? item in dataList ?? []) {
         // 데이터 항목이 null이 아니면 처리합니다.
         if (item != null) {
           String tideTime = item['tide_time'];
