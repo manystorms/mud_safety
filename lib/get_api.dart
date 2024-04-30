@@ -14,7 +14,7 @@ class ApiReceive {
   }
 
   Future<void> getTide() async {
-    final request = Uri.parse(getURL(33.9518, 128.3845, 20240430));
+    final request = Uri.parse(getURL(33.958, 128.3845, 20240430));
     http.Response response = await http.get(request);
     if(response.statusCode == 200) {
       String jsonString = response.body;
