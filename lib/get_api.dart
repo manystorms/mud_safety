@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'dart:html';
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
 import 'package:mud_safety/get_gps.dart';
@@ -20,12 +18,15 @@ class ApiReceive {
     GpsReceive gpsReceive = GpsReceive();
     Map<String, double> gpslocation = await gpsReceive.getLocation();
 
-    final request = Uri.parse(getURL(33.9518, 128.3845, 20240430));
+    final request = Uri.parse(getURL(gpslocation['latitude'], gpslocation['longitude'], 20240430));
     final response = await http.get(request);
-    if (response.statusCode == 200) {
+
+    if(response.body.contains('No search data')) {
+      print('error');
+    }else if (response.statusCode == 200) {
       final document = xml.XmlDocument.parse(response.body);
       final dataList = document.findAllElements('data');
-
+      print(document);
       final Map<String, String> obsMap = {};
 
       for (var data in dataList) {
@@ -36,8 +37,6 @@ class ApiReceive {
       }
 
       print(obsMap);
-    } else {
-      print('Failed to fetch data from API');
     }
   }
 
