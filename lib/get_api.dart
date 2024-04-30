@@ -25,13 +25,23 @@ class ApiReceive {
       String jsonString = response.body;
       Map<String, dynamic> jsonData = jsonDecode(jsonString);
 
-      List<Map<String, dynamic>> data = jsonData['result']['data'];
+      List<Map<String, dynamic>> dataList = (jsonData['data'] as List).cast<Map<String, dynamic>>();
 
-      for (var entry in data) {
-        String tideTime = entry['tide_time'];
-        String tideLevel = entry['tide_level'];
-        print('tide_time: $tideTime, tide_level: $tideLevel');
+      Map<String, String> tideMap = {};
+      for (Map<String, dynamic>? item in dataList) {
+        // 데이터 항목이 null이 아니면 처리합니다.
+        if (item != null) {
+          String tideTime = item['tide_time'];
+          String tideLevel = item['tide_level'];
+
+          // tideTime과 tideLevel이 모두 null이 아닌 경우에만 tideMap에 추가합니다.
+          if (tideTime != null && tideLevel != null) {
+            tideMap[tideTime] = tideLevel;
+          }
+        }
       }
+
+      print(tideMap);
     }
   }
 
