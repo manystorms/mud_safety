@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:mud_safety/get_api.dart';
 import 'package:mud_safety/get_gps.dart';
+import 'package:mud_safety/get_height.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -91,14 +92,21 @@ class _ButtonWidgetState extends State<ButtonWidget> {
     print(gpslocation['longitude']);
   }
 
+  Future<void> getHeight() async {
+    HeightReveive heightReveive = HeightReveive();
+
+    Map<String, double> weather = await heightReveive.getWeather();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        ApiReceive myclass = ApiReceive();
+        TideReceive myclass = TideReceive();
 
         future: myclass.getTide();
         future: getLocation();
+        future: getHeight();
       },
       child: Text(longitude),
     );

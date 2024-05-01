@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
 import 'package:mud_safety/get_gps.dart';
 
-class ApiReceive {
+class TideReceive {
   String getTideURL(double? latitude, double? longitude, int Date) {
     const URL1 = 'http://www.khoa.go.kr/api/oceangrid/tideBedPre/search.do?ServiceKey=';
     const URL2 = '&Date=';
@@ -14,7 +14,7 @@ class ApiReceive {
     return URL1+APIkey+URL2+Date.toString()+URL3+longitude.toString()+URL4+latitude.toString()+URL5;
   }
 
-  Future<Map<String, String>> getTide() async {
+  Future<Map<String, double>> getTide() async {
     GpsReceive gpsReceive = GpsReceive();
     Map<String, double> gpslocation = await gpsReceive.getLocation();
 
@@ -22,21 +22,21 @@ class ApiReceive {
     final response = await http.get(request);
 
     if(response.body.contains('No search data')) {
-      return {'Error': '갯벌에 있지 않음'};
+      return {'Error': 1.5};
     }else if (response.statusCode == 200) {
       final document = xml.XmlDocument.parse(response.body);
       final dataList = document.findAllElements('data');
-      final Map<String, String> obsMap = {};
+      final Map<String, double> obsMap = {};
 
       for (var data in dataList) {
         final obsTime = data.findElements('obs_time').single.text;
         final obsLevel = data.findElements('obs_level').single.text;
 
-        obsMap[obsTime] = obsLevel;
+        obsMap[obsTime] = double.parse(obsLevel);
       }
       return obsMap;
     }else{
-      return {'Error': 'API 수신 오류'};
+      return {'Error': 1};
     }
   }
 
