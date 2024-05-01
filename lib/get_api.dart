@@ -14,7 +14,7 @@ class ApiReceive {
     return URL1+APIkey+URL2+Date.toString()+URL3+longitude.toString()+URL4+latitude.toString()+URL5;
   }
 
-  Future<void> getTide() async {
+  Future<Map<String, String>> getTide() async {
     GpsReceive gpsReceive = GpsReceive();
     Map<String, double> gpslocation = await gpsReceive.getLocation();
 
@@ -22,11 +22,13 @@ class ApiReceive {
     final response = await http.get(request);
 
     if(response.body.contains('No search data')) {
-      print('error');
+      final Map<String, String> res = {
+        'Error': '갯벌에 있지 않음',
+      };
+      return res;
     }else if (response.statusCode == 200) {
       final document = xml.XmlDocument.parse(response.body);
       final dataList = document.findAllElements('data');
-      print(document);
       final Map<String, String> obsMap = {};
 
       for (var data in dataList) {
@@ -35,8 +37,12 @@ class ApiReceive {
 
         obsMap[obsTime] = obsLevel;
       }
-
-      print(obsMap);
+      return obsMap;
+    }else{
+      final Map<String, String> res = {
+        'Error': 'API 수신 오류',
+      };
+      return res;
     }
   }
 
