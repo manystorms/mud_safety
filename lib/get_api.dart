@@ -3,7 +3,7 @@ import 'package:xml/xml.dart' as xml;
 import 'package:mud_safety/get_gps.dart';
 
 class ApiReceive {
-  String getURL(double? latitude, double? longitude, int Date) {
+  String getTideURL(double? latitude, double? longitude, int Date) {
     const URL1 = 'http://www.khoa.go.kr/api/oceangrid/tideBedPre/search.do?ServiceKey=';
     const URL2 = '&Date=';
     const URL3 = '&ObsLon=';
@@ -18,7 +18,7 @@ class ApiReceive {
     GpsReceive gpsReceive = GpsReceive();
     Map<String, double> gpslocation = await gpsReceive.getLocation();
 
-    final request = Uri.parse(getURL(gpslocation['latitude'], gpslocation['longitude'], 20240430));
+    final request = Uri.parse(getTideURL(gpslocation['latitude'], gpslocation['longitude'], 20240430));
     final response = await http.get(request);
 
     if(response.body.contains('No search data')) {
