@@ -38,9 +38,12 @@ class HeightReveive {
     }
   }
 
-  Future<void> getPressure() async {
+  Future<dynamic> getPressure() async {
     dynamic a = flutterBarometerEvents.single;
-    print(a.runtimeType);
+    return a;
   }
 
+  Future<double> getHeight() async {
+
+  }
 }
