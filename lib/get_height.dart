@@ -1,6 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
 import 'package:mud_safety/get_gps.dart';
+import 'package:flutter_barometer/flutter_barometer.dart';
 
 class HeightReveive {
   String getWeatherURL(double? latitude, double? longitude) {
@@ -36,4 +37,10 @@ class HeightReveive {
       return {'Error': 1};
     }
   }
+
+  Future<void> getPressure() async {
+    dynamic a = flutterBarometerEvents.single;
+    print(a.runtimeType);
+  }
+
 }
