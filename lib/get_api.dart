@@ -22,10 +22,7 @@ class ApiReceive {
     final response = await http.get(request);
 
     if(response.body.contains('No search data')) {
-      final Map<String, String> res = {
-        'Error': '갯벌에 있지 않음',
-      };
-      return res;
+      return {'Error': '갯벌에 있지 않음'};
     }else if (response.statusCode == 200) {
       final document = xml.XmlDocument.parse(response.body);
       final dataList = document.findAllElements('data');
@@ -39,10 +36,7 @@ class ApiReceive {
       }
       return obsMap;
     }else{
-      final Map<String, String> res = {
-        'Error': 'API 수신 오류',
-      };
-      return res;
+      return {'Error': 'API 수신 오류'};
     }
   }
 
