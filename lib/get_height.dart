@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
 import 'package:mud_safety/get_gps.dart';
-import 'package:flutter_barometer/flutter_barometer.dart';
+import 'package:sensor_library/models/raw_sensors/barometer.dart';
 
 class HeightReveive {
   String getWeatherURL(double? latitude, double? longitude) {
@@ -38,12 +38,16 @@ class HeightReveive {
     }
   }
 
-  Future<dynamic> getPressure() async {
-    dynamic a = flutterBarometerEvents.single;
-    return a;
-  }
+  void getPressure() {
+    late Barometer barometer;
 
-  Future<double> getHeight() async {
+    barometer = Barometer(inMillis: 500);
+    barometer.getRaw().listen((element) {
+      double valueInHectopascal = element.hectpascal;
 
+      print(valueInHectopascal);
+      print('b');
+    });
   }
 }
+

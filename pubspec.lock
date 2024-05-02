@@ -41,14 +41,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.18.0"
-  crypto:
-    dependency: transitive
-    description:
-      name: crypto
-      sha256: ff625774173754681d66daaf4a448684fb04b78f902da9cb3d308c19cc5e8bab
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.3"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -57,6 +49,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.8"
+  environment_sensors:
+    dependency: transitive
+    description:
+      name: environment_sensors
+      sha256: "814c78232a2043762cb015bebd90b51cb95a37e6c636a91189f9193eabbddf78"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.0"
   fake_async:
     dependency: transitive
     description:
@@ -65,27 +65,27 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.1"
-  fixnum:
-    dependency: transitive
-    description:
-      name: fixnum
-      sha256: "25517a4deb0c03aa0f32fd12db525856438902d9c16536311e76cdc57b31d7d1"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.0"
   flutter:
     dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_barometer:
-    dependency: "direct main"
+  flutter_barometer_plugin:
+    dependency: transitive
     description:
-      name: flutter_barometer
-      sha256: a922e0decd52f22d0c0b9913797510ef15b13eb105940eb28004ee31dbfed06a
+      name: flutter_barometer_plugin
+      sha256: b54c25da8acbce2686c411adb82eff05e99e8e2b221a7c731397e2281250687f
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.0"
+    version: "0.0.1+3"
+  flutter_compass:
+    dependency: transitive
+    description:
+      name: flutter_compass
+      sha256: "1a0121bff32df95193812b4e0f69e95f45fdec042ebd7a326ba087c0f6ec8304"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -108,18 +108,18 @@ packages:
     dependency: "direct main"
     description:
       name: geolocator
-      sha256: "5c23f3613f50586c0bbb2b8f970240ae66b3bd992088cf60dd5ee2e6f7dde3a8"
+      sha256: "5c496b46e245d006760e643cedde7c9fa785a34391b5eca857a46358f9bde02b"
       url: "https://pub.dev"
     source: hosted
-    version: "9.0.2"
+    version: "8.2.1"
   geolocator_android:
     dependency: transitive
     description:
       name: geolocator_android
-      sha256: f15d1536cd01b1399578f1da1eb5d566e7a718db6a3648f2c24d2e2f859f0692
+      sha256: "3fa9215caf1e4463adbdf1f21b07fdcb9bc2af2ef1df3715a52376b87bebb087"
       url: "https://pub.dev"
     source: hosted
-    version: "4.5.4"
+    version: "3.2.1"
   geolocator_apple:
     dependency: transitive
     description:
@@ -192,6 +192,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  light:
+    dependency: transitive
+    description:
+      name: light
+      sha256: b4c8f9f1faad2c0b60f53ae0bc78c02a5645edeb889802cfed2137a0a04ed57a
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   lints:
     dependency: transitive
     description:
@@ -200,6 +208,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  logging:
+    dependency: transitive
+    description:
+      name: logging
+      sha256: "623a88c9594aa774443aa3eb2d41807a48486b5613e67599fb4c41c0ad47c340"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   matcher:
     dependency: transitive
     description:
@@ -248,6 +264,46 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+  proximity_sensor:
+    dependency: transitive
+    description:
+      name: proximity_sensor
+      sha256: "570d89eafaf05fc660b05c55ce16ca68e09502d994cc137eda4fc50dc4d01306"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.1"
+  sensor_library:
+    dependency: "direct main"
+    description:
+      name: sensor_library
+      sha256: bbb9d3258e38d11a49299569fd1395f7680e20ca50147c6c5ad0299c8e995371
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
+  sensors_plus:
+    dependency: transitive
+    description:
+      name: sensors_plus
+      sha256: "362c8f4f001838b90dd5206b898bbad941bc0142479eab9a3415f0f79e622908"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.1"
+  sensors_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: sensors_plus_platform_interface
+      sha256: bc472d6cfd622acb4f020e726433ee31788b038056691ba433fec80e448a094f
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
+  sensors_plus_web:
+    dependency: transitive
+    description:
+      name: sensors_plus_web
+      sha256: fca8d7d9ab6233b2a059952666415508e252420be1ef54f092d07884da53ec5e
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.2"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -261,14 +317,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
-  sprintf:
-    dependency: transitive
-    description:
-      name: sprintf
-      sha256: "1fc9ffe69d4df602376b52949af107d8f5703b77cda567c4d7d86a0693120f23"
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.0.0"
   stack_trace:
     dependency: transitive
     description:
@@ -317,14 +365,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.2"
-  uuid:
-    dependency: transitive
-    description:
-      name: uuid
-      sha256: "814e9e88f21a176ae1359149021870e87f7cddaf633ab678a5d2b0bff7fd1ba8"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.4.0"
   vector_math:
     dependency: transitive
     description:
@@ -351,4 +391,4 @@ packages:
     version: "5.4.1"
 sdks:
   dart: ">=3.2.3 <4.0.0"
-  flutter: ">=2.8.0"
+  flutter: ">=3.3.0"
