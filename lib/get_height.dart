@@ -3,6 +3,7 @@ import 'package:xml/xml.dart' as xml;
 import 'package:mud_safety/get_gps.dart';
 import 'package:sensor_library/models/raw_sensors/barometer.dart';
 import 'dart:async';
+import 'dart:math';
 
 class HeightReveive {
   String getWeatherURL(double? latitude, double? longitude) {
@@ -56,5 +57,18 @@ class HeightReveive {
     // 비동기 작업 완료 대기
     await completer.future;
     print('a');
+  }
+
+  Future<double> getHeight() {
+    double res = 0;
+    double WeatherPressure = 0;
+    double WeatherTemperature = 0;
+    double Pressure = 0;
+    const R = 297.0;
+    const G = 9.8;
+
+    res = R*WeatherTemperature/G*log(WeatherPressure/Pressure);
+
+    return res; //m
   }
 }
