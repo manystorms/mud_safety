@@ -2,6 +2,7 @@ import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
 import 'package:mud_safety/get_gps.dart';
 import 'package:sensor_library/models/raw_sensors/barometer.dart';
+import 'dart:async';
 
 class HeightReveive {
   String getWeatherURL(double? latitude, double? longitude) {
@@ -38,16 +39,22 @@ class HeightReveive {
     }
   }
 
-  void getPressure() {
-    late Barometer barometer;
+  Future<void> getPressure() async {
+    Completer<void> completer = Completer<void>();
 
-    barometer = Barometer(inMillis: 500);
+    late Barometer barometer;
+    barometer = Barometer(inMillis: 1000);
+
+    // 기압 데이터 수신 이벤트 구독
     barometer.getRaw().listen((element) {
       double valueInHectopascal = element.hectpascal;
-
       print(valueInHectopascal);
       print('b');
+      completer.complete(); // 기압 데이터를 가져왔으므로 Future를 완료합니다.
     });
+    print('c');
+    // 비동기 작업 완료 대기
+    await completer.future;
+    print('a');
   }
 }
-

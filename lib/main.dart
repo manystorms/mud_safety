@@ -3,32 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:sensor_library/models/raw_sensors/barometer.dart';
 
 void main() {
-  runApp(HomeScreen());
+  //runApp(HomeScreen());
+  runApp(MaterialApp(
+    home: PressureDisplay(),
+  ));
 }
 
-class BarometerRoute extends StatefulWidget {
-  const BarometerRoute({Key? key}) : super(key: key);
+class PressureDisplay extends StatefulWidget {
+  const PressureDisplay({Key? key}) : super(key: key);
 
   @override
-  _BarometerRouteState createState() => _BarometerRouteState();
+  _PressureDisplayState createState() => _PressureDisplayState();
 }
 
-class _BarometerRouteState extends State<BarometerRoute> {
-  double hpa = 0.0;
-  double mmm = 0.0;
-  late Barometer barometer;
+class _PressureDisplayState extends State<PressureDisplay> {
+  double pressureValue = 0.0; // 기압 값을 저장할 변수
+  late Barometer barometer; // Barometer 객체
 
   @override
   void initState() {
     super.initState();
-    barometer = Barometer(inMillis: 500);
+    // Barometer 객체 초기화 및 데이터 수신 이벤트 구독
+    barometer = Barometer(inMillis: 1000);
     barometer.getRaw().listen((element) {
-      double valueInHectopascal = element.hectpascal;
-      double valueInMMMercury = element.millimeterOfMercury;
-
       setState(() {
-        hpa = valueInHectopascal;
-        mmm = valueInMMMercury;
+        pressureValue = element.hectpascal; // 기압 값 업데이트
+        print(pressureValue);
       });
     });
   }
@@ -36,46 +36,20 @@ class _BarometerRouteState extends State<BarometerRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Barometer"),
+      appBar: AppBar(
+        title: const Text('Pressure Display'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Pressure: ${pressureValue.toStringAsFixed(2)} hPa', // 기압 값 출력
+              style: TextStyle(fontSize: 24),
+            ),
+          ],
         ),
-        body: Padding(
-            padding: const EdgeInsets.all(25.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const SizedBox(height: 5),
-                Center(
-                    child: Text("hectpascal".toUpperCase(),
-                        style: const TextStyle(fontWeight: FontWeight.bold))),
-                Center(
-                    child: Text(
-                      hpa.toStringAsFixed(2),
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue,
-                          fontSize: 30),
-                    )),
-                const SizedBox(height: 30),
-                Center(
-                    child: Text("Millimeter Of Mercury".toUpperCase(),
-                        style: const TextStyle(fontWeight: FontWeight.bold))),
-                Center(
-                    child: Text(
-                      mmm.toStringAsFixed(2),
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue,
-                          fontSize: 30),
-                    )),
-                const SizedBox(height: 30),
-                const Center(
-                    child: Text(
-                      "All Values fixed to 2 Decimals",
-                      style: TextStyle(fontSize: 14),
-                    )),
-              ],
-            )));
+      ),
+    );
   }
 }

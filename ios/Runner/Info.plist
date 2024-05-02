@@ -49,5 +49,7 @@
 	<string>위치 정보가 필요합니다.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>위치 정보가 필요합니다.</string>
+	<key>NSBarometerUsageDescription</key>
+    <string>We need your permission to access the barometer sensor.</string>
 </dict>
 </plist>
