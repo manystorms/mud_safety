@@ -3,6 +3,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:mud_safety/get_api.dart';
 import 'package:mud_safety/get_gps.dart';
 import 'package:mud_safety/get_height.dart';
+import 'package:mud_safety/get_pressure.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -94,7 +95,18 @@ class _ButtonWidgetState extends State<ButtonWidget> {
 
   Future<void> getHeight() async {
     HeightReveive heightReveive = HeightReveive();
-    heightReveive.getPressure();
+    FlutterBarometer pressure = FlutterBarometer();
+
+    FlutterBarometer.currentPressure.then((value) {
+      print('Current Pressure: ${value.hectpascal} hPa');
+      print('Inch of Mercury: ${value.inchOfMercury} inHg');
+      print('Millimeter of Mercury: ${value.millimeterOfMercury} mmHg');
+      print('Pounds per Square Inch: ${value.poundsSquareInch} psi');
+      print('Atmospheres: ${value.atm} atm');
+    }).catchError((error) {
+      print('Error fetching current pressure: $error');
+    });
+
     Map<String, double> weather = await heightReveive.getWeather();
   }
 
