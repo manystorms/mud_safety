@@ -38,7 +38,7 @@ dependencies:
   geolocator: 8.2.1
   http: ^0.13.5
   xml: ^5.3.0
-  sensor_library: ^0.1.0
+  #sensor_library: ^0.1.0
 
 
 dev_dependencies:

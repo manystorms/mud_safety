@@ -5,6 +5,45 @@ import 'package:mud_safety/get_gps.dart';
 import 'package:mud_safety/get_height.dart';
 import 'package:mud_safety/get_pressure.dart';
 
+class MyApp extends StatelessWidget {
+  Future<void> getPressure() async {
+    WidgetsFlutterBinding.ensureInitialized();
+
+    // 현재 압력 값을 가져오기 위해 currentPressure 메서드 호출
+    try {
+      BarometerValue pressureValue = await FlutterBarometer.currentPressure;
+      // pressureValue에서 필요한 정보를 추출하여 사용
+      print('Current Pressure in hectopascal: ${pressureValue.hectpascal}');
+      print('Current Pressure in inch of Mercury: ${pressureValue.inchOfMercury}');
+      print('Current Pressure in millimeter of Mercury: ${pressureValue.millimeterOfMercury}');
+      print('Current Pressure in pounds per square inch: ${pressureValue.poundsSquareInch}');
+      print('Current Pressure in atmospheres: ${pressureValue.atm}');
+    } catch (error) {
+      // 오류 처리
+      print('Error fetching current pressure: $error');
+    }
+}
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Button Example'),
+        ),
+        body: Center(
+          child: ElevatedButton(
+            onPressed: () {
+              future: getPressure();
+            },
+            child: Text('Press Me'),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
