@@ -62,6 +62,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_barometer:
+    dependency: "direct main"
+    description:
+      name: flutter_barometer
+      sha256: a922e0decd52f22d0c0b9913797510ef15b13eb105940eb28004ee31dbfed06a
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
   flutter_lints:
     dependency: "direct dev"
     description:
