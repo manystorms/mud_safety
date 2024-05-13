@@ -6,7 +6,6 @@ import 'package:mud_safety/get_height.dart';
 import 'package:mud_safety/get_pressure.dart';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_barometer/flutter_barometer.dart';
 
 class MyApp extends StatefulWidget {
   @override
