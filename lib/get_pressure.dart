@@ -39,3 +39,7 @@ class BarometerValue {
   double get poundsSquareInch => hectpascal / 68.9476;
   double get atm => hectpascal / 1013.25;
 }
+
+class getPressure {
+
+}

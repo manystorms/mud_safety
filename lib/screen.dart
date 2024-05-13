@@ -5,7 +5,6 @@ import 'package:mud_safety/get_gps.dart';
 import 'package:mud_safety/get_height.dart';
 import 'package:mud_safety/get_pressure.dart';
 
-import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter_barometer/flutter_barometer.dart';
 
@@ -206,7 +205,7 @@ class _ButtonWidgetState extends State<ButtonWidget> {
       print('Error fetching current pressure: $error');
     });
 
-    Map<String, double> weather = await heightReveive.getWeather();
+    //Map<String, double> weather = await heightReveive.getWeather();
   }
 
   @override
