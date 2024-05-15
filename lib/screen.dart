@@ -15,6 +15,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
   BarometerValue _currentPressure = BarometerValue(0.0);
+  double latitude = 0, longitude = 0;
 
   @override
   void initState() {
@@ -25,6 +26,8 @@ class _MyAppState extends State<MyApp> {
         _currentPressure = event;
       });
     });
+
+    updateGPS();
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
@@ -47,6 +50,12 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _platformVersion = platformVersion;
     });
+  }
+
+  Future<void> updateGPS() async {
+    GpsReceive a = GpsReceive();
+    var b = await a.getLocation();
+    latitude = b.$1; longitude = b.$2;
   }
 
   @override
@@ -90,6 +99,12 @@ class _MyAppState extends State<MyApp> {
               ),
               Text(
                 '${(_currentPressure.atm * 1000).round() / 1000} atm',
+                style: TextStyle(
+                  fontSize: 30,
+                ),
+              ),
+              Text(
+                '$latitude',
                 style: TextStyle(
                   fontSize: 30,
                 ),
@@ -185,9 +200,9 @@ class _ButtonWidgetState extends State<ButtonWidget> {
   Future<void> getLocation() async {
     GpsReceive gpsReceive = GpsReceive();
 
-    Map<String, double> gpslocation = await gpsReceive.getLocation();
-    print(gpslocation['latitude']);
-    print(gpslocation['longitude']);
+    //Map<String, double> gpslocation = await gpsReceive.getLocation();
+    //print(gpslocation['latitude']);
+    //print(gpslocation['longitude']);
   }
 
   Future<void> getHeight() async {

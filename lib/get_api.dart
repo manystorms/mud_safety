@@ -16,9 +16,9 @@ class TideReceive {
 
   Future<Map<String, double>> getTide() async {
     GpsReceive gpsReceive = GpsReceive();
-    Map<String, double> gpslocation = await gpsReceive.getLocation();
+    var gpsLocation = await gpsReceive.getLocation();
 
-    final request = Uri.parse(getTideURL(gpslocation['latitude'], gpslocation['longitude'], 20240430));
+    final request = Uri.parse(getTideURL(gpsLocation.$1, gpsLocation.$2, 20240430));
     final response = await http.get(request);
 
     if(response.body.contains('No search data')) {

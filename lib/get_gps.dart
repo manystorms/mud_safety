@@ -25,17 +25,14 @@ class GpsReceive {
     return '위치 권한이 허가 되었습니다';
   }
 
-  Future<Map<String, double>> getLocation() async {
+  Future<(double, double)> getLocation() async {
+    checkPermission();
+
     Position position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
 
     // 위도와 경도 업데이트
-    Map<String, double> res = {
-      'latitude': position.latitude,
-      'longitude': position.longitude,
-    };
-
-    return res;
+    return (position.latitude, position.longitude);
   }
 }

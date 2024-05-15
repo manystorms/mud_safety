@@ -18,9 +18,9 @@ class HeightReveive {
 
   Future<(double, double, int)> getWeather() async {
     GpsReceive gpsReceive = GpsReceive();
-    Map<String, double> gpslocation = await gpsReceive.getLocation();
+    var gpsLocation = await gpsReceive.getLocation();
 
-    final request = Uri.parse(getWeatherURL(gpslocation['latitude'], gpslocation['longitude']));
+    final request = Uri.parse(getWeatherURL(gpsLocation.$1, gpsLocation.$2));
     final response = await http.get(request);
     double Pressure = 0;
     double Temperature = 0;
