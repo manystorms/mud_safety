@@ -10,11 +10,6 @@ class FlutterBarometer {
 
   static var _onPressureChanged;
 
-  static Future<String?> get platformVersion async {
-    final String? version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
-  }
-
   static Future<BarometerValue> get currentPressure async {
     final pressure = await _channel.invokeMethod('getCurrentPressure');
     return BarometerValue(pressure);
