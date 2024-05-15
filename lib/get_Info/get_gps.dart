@@ -25,14 +25,14 @@ class GpsReceive {
     return '위치 권한이 허가 되었습니다';
   }
 
-  Future<(double, double)> getLocation() async {
-    checkPermission();
+  Future<(double, double, String)> getLocation() async {
+    String Permission_State = await checkPermission();
 
     Position position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
 
     // 위도와 경도 업데이트
-    return (position.latitude, position.longitude);
+    return (position.latitude, position.longitude, Permission_State);
   }
 }

@@ -1,11 +1,9 @@
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
-import 'package:mud_safety/get_gps.dart';
-import 'package:mud_safety/get_pressure.dart';
+import 'package:mud_safety/get_Info/get_gps.dart';
 import 'dart:async';
-import 'dart:math';
 
-class HeightReveive {
+class WeatherReveive {
   String getWeatherURL(double? latitude, double? longitude) {
     const URL1 = 'https://api.openweathermap.org/data/2.5/weather?lat=';
     const URL2 = '&lon=';
@@ -39,29 +37,5 @@ class HeightReveive {
 
     }
     return (Pressure, Temperature, Error);
-  }
-
-  Future <(double, String)> getHeight() async {
-    double res = 0;
-    double Pressure = 0;
-    const R = 297.0;
-    const G = 9.8;
-
-    var ReceiveWeather = await getWeather();
-    if(ReceiveWeather.$3 == 1) return (res, 'APIError');
-
-    double WeatherPressure = ReceiveWeather.$1;
-    double WeatherTemperature = ReceiveWeather.$2;
-
-    try {
-      BarometerValue pressureValue = await FlutterBarometer.currentPressure;
-      Pressure = pressureValue.hectpascal;
-    } catch (error) {
-      return (res, error.toString());
-    }
-
-    res = R*WeatherTemperature/G*log(WeatherPressure/Pressure);
-
-    return (res, 'NoError');
   }
 }

@@ -3,8 +3,5 @@ import 'package:flutter/material.dart';
 import 'package:flutter_barometer/flutter_barometer.dart';
 
 void main() {
-  //runApp(MyApp());
-  flutterBarometerEvents.listen((FlutterBarometerEvent event) {
-    print(event);
-  });
+  runApp(MyApp());
 }
