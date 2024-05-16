@@ -13,6 +13,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
+import 'package:mud_safety/get_Info/get_data.dart';
 import 'home_model.dart';
 export 'home_model.dart';
 
@@ -459,7 +460,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    '현재 고도(m)',
+                                                    '현재 고도(${Data.Height}m)',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleLarge

@@ -2,6 +2,8 @@ import 'get_gps.dart';
 import 'get_tide.dart';
 import 'get_weather.dart';
 
+ReceiveData Data = ReceiveData();
+
 Future<ReceiveData> UpdateData() async {
   ReceiveData res = ReceiveData();
 
@@ -17,8 +19,8 @@ Future<ReceiveData> UpdateData() async {
   res.longtitude = LocationData.$2;
   res.location_Permission_State = LocationData.$3;
 
-  res.Pressure = WeatherData.$1;
-  res.Temperature = WeatherData.$2;
+  res.Weather_Pressure = WeatherData.$1;
+  res.Weather_Temperature = WeatherData.$2;
   res.Weather_Error = WeatherData.$3;
 
   return res;
@@ -31,7 +33,10 @@ class ReceiveData {
 
   Map<String, double> obsData = {};
 
-  double Pressure = 0;
-  double Temperature = 0;
+  double Weather_Pressure = 0;
+  double Weather_Temperature = 0;
   int Weather_Error = 0;
+
+  int Pressure = 0;
+  double Height = 0;
 }
