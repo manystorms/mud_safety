@@ -5,7 +5,7 @@ class GpsReceive {
     final isLocationEnabled = await Geolocator.isLocationServiceEnabled();
 
     if(!isLocationEnabled) {
-      return '위치 서비스를 활성화해주세요';
+      return 'UnEnabled';
     }
 
     LocationPermission checkedPermission = await Geolocator.checkPermission();
@@ -14,15 +14,15 @@ class GpsReceive {
       checkedPermission = await Geolocator.requestPermission();
 
       if(checkedPermission == LocationPermission.denied) {
-        return '위치 권한을 허가해주세요';
+        return 'Denied';
       }
     }
 
     if(checkedPermission == LocationPermission.deniedForever) {
-      return '앱의 위치 권한을 설정에서 허가해주세요';
+      return 'DeniedForever';
     }
 
-    return '위치 권한이 허가 되었습니다';
+    return 'Enabled';
   }
 
   Future<(double, double, String)> getLocation() async {

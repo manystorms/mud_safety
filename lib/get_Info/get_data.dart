@@ -27,7 +27,7 @@ Future<ReceiveData> UpdateData() async {
 class ReceiveData {
   double latitude = 0;
   double longtitude = 0;
-  String location_Permission_State = '';
+  String location_Permission_State = 'a';
 
   Map<String, double> obsData = {};
 
