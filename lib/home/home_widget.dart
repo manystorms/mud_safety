@@ -26,9 +26,7 @@ class HomeWidget extends StatefulWidget {
 
 class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   late HomeModel _model;
-
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
   final animationsMap = <String, AnimationInfo>{};
 
   @override
@@ -697,7 +695,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 8.0),
                                         child: Text(
-                                          '시간별 조위',
+                                          Data.obs_Graph_name,
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
                                               .override(
@@ -725,8 +723,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                               child: FlutterFlowLineChart(
                                                 data: [
                                                   FFLineChartData(
-                                                    xData: [],
-                                                    yData: [],
+                                                    xData: Data.obs_x,
+                                                    yData: Data.obs_y,
                                                     settings: LineChartBarData(
                                                       color:
                                                           FlutterFlowTheme.of(
