@@ -589,7 +589,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    '조위의 차(m)',
+                                                    '조위의 차(${Data.Tide_Gap}m)',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleLarge

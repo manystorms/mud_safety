@@ -37,6 +37,8 @@ class ReceiveData {
   double Weather_Temperature = 0;
   int Weather_Error = 0;
 
-  int Pressure = 0;
+  double Pressure = 0;
   double Height = 0;
+
+  double Tide_Gap = 0;
 }
