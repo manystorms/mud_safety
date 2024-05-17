@@ -378,7 +378,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                               getDisplayTime: (value) =>
                                                   StopWatchTimer.getDisplayTime(
                                                 value,
-                                                hours: false,
+                                                hours: true,
                                                 milliSecond: false,
                                               ),
                                               controller:
