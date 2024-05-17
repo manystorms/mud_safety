@@ -6,9 +6,24 @@ import 'dart:async';
 
 ReceiveData Data = ReceiveData();
 
+Future<void> Initial() async {
+  GpsReceive GpsReceiveClass = GpsReceive();
+  TideReceive TideReceiveClass = TideReceive();
+  WeatherReveive WeatherReceiveClass = WeatherReveive();
+
+  GpsReceiveClass.updateLocation();
+  while (Data.location_State != 'Enabled') {
+    await Future.delayed(Duration(seconds: 1));
+  }
+  Data.latitude = 35.584923; Data.longitude = 126.514339;
+  TideReceiveClass.updateTide();
+  WeatherReceiveClass.updateWeather();
+}
+
 void UpdateData() {
   PressureReceive();
 
+  Initial();
 
   GpsReceive GpsReceiveClass = GpsReceive();
   TideReceive TideReceiveClass = TideReceive();
@@ -27,22 +42,10 @@ void UpdateData() {
   });
 }
 
-Future<void> UpdateDaa() async {
-  GpsReceive GpsReceiveClass = GpsReceive();
-  TideReceive TideReceiveClass = TideReceive();
-  print('start');
-  //var LocationData = await GpsReceiveClass.getLocation();
-  //Data.latitude = LocationData.$1;
-  //Data.longitude = LocationData.$2;
-  //Data.location_Permission_State = LocationData.$3;
-
-  TideReceiveClass.updateTide();
-}
-
 class ReceiveData {
   double latitude = 0;
   double longitude = 0;
-  String location_Permission_State = 'a';
+  String location_State = 'a';
 
   String obs_Graph_name = '데이터를 받아오고 있습니다';
   List<int> obs_x = [0];

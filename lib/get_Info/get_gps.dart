@@ -35,6 +35,6 @@ class GpsReceive {
     // 위도와 경도 업데이트
     Data.latitude = position.latitude;
     Data.longitude = position.longitude;
-    Data.location_Permission_State = Permission_State;
+    Data.location_State = Permission_State;
   }
 }

@@ -16,7 +16,7 @@ class WeatherReveive {
   }
 
   Future<void> updateWeather() async {
-    GpsReceive gpsReceive = GpsReceive();
+    if(Data.location_State != 'Enabled') return;
 
     final request = Uri.parse(getWeatherURL(Data.latitude, Data.longitude));
     final response = await http.get(request);

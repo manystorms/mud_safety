@@ -15,7 +15,11 @@ class TideReceive {
   }
 
   Future<void> updateTide() async {
-    Data.latitude = 35.584923; Data.longitude = 126.514339;
+    if(Data.location_State != 'Enabled') {
+      Data.obs_Graph_name = '위치 권한이 허용되지 않았습니다';
+      return;
+    }
+
     final request = Uri.parse(getTideURL(Data.latitude, Data.longitude, 20240517));
     final response = await http.get(request);
 
