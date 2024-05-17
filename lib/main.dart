@@ -10,8 +10,12 @@ import 'flutter_flow/nav/nav.dart';
 import 'package:mud_safety/get_Info/get_pressure.dart';
 import 'index.dart';
 
+
+import 'package:mud_safety/get_Info/get_data.dart';
 void main() async {
-  PressureReceive();
+  WidgetsFlutterBinding.ensureInitialized();
+  UpdateData();
+  //PressureReceive();
 
   WidgetsFlutterBinding.ensureInitialized();
   GoRouter.optionURLReflectsImperativeAPIs = true;

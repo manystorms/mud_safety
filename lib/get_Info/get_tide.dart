@@ -15,7 +15,9 @@ class TideReceive {
   }
 
   Future<void> updateTide() async {
-    final request = Uri.parse(getTideURL(Data.latitude, Data.longitude, 20240430));
+    Data.latitude = 35.584923; Data.longitude = 126.514339;
+    final request = Uri.parse(getTideURL(Data.latitude, Data.longitude, 20240517));
+    print(request);
     final response = await http.get(request);
 
     if(response.body.contains('No search data')) {
@@ -29,11 +31,14 @@ class TideReceive {
       Data.obs_y.clear();
 
       for (var data in dataList) {
-        final obsTime = data.findElements('obs_time').single;
-        final obsLevel = data.findElements('obs_level').single;
+        final obsTime = data.findElements('obs_time').single.text;
+        final obsLevel = data.findElements('obs_level').single.text;
 
-        Data.obs_x.add(obsTime);
-        Data.obs_y.add(obsLevel);
+        final obsDateTime = DateTime.parse(obsTime);
+        final obsUnixTime = obsDateTime.millisecondsSinceEpoch/1000;
+
+        Data.obs_x.add(obsUnixTime);
+        Data.obs_y.add(double.parse(obsLevel));
       }
     }else{
       Data.obs_Graph_name = '데이터를 받아오고 있습니다';

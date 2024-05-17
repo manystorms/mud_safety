@@ -27,7 +27,7 @@ class GpsReceive {
 
   Future<(double, double, String)> getLocation() async {
     String Permission_State = await checkPermission();
-
+    print(Permission_State);
     Position position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );

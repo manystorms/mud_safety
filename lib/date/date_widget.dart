@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'date_model.dart';
 export 'date_model.dart';
 
@@ -61,68 +62,17 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                   Text(
                     'Calendar',
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          fontFamily: 'Outfit',
-                          letterSpacing: 0.0,
-                        ),
+                      fontFamily: 'Outfit',
+                      letterSpacing: 0,
+                    ),
                   ),
                 ],
               ),
             ],
           ),
-          actions: [
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Opacity(
-                  opacity: 0.0,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [],
-                  ),
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Opacity(
-                              opacity: 0.0,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Opacity(
-                      opacity: 0.0,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [],
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [],
-                ),
-              ],
-            ),
-          ],
+          actions: [],
           centerTitle: false,
-          elevation: 0.0,
+          elevation: 0,
         ),
         body: Column(
           mainAxisSize: MainAxisSize.max,
@@ -132,31 +82,30 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
               child: Column(
                 children: [
                   Align(
-                    alignment: Alignment(0.0, 0),
+                    alignment: Alignment(0, 0),
                     child: FlutterFlowButtonTabBar(
                       useToggleButtonStyle: true,
                       isScrollable: true,
                       labelStyle:
-                          FlutterFlowTheme.of(context).titleMedium.override(
-                                fontFamily: 'Plus Jakarta Sans',
-                                letterSpacing: 0.0,
-                              ),
+                      FlutterFlowTheme.of(context).titleMedium.override(
+                        fontFamily: 'Plus Jakarta Sans',
+                        letterSpacing: 0,
+                      ),
                       unselectedLabelStyle: TextStyle(),
                       labelColor: FlutterFlowTheme.of(context).primaryText,
                       unselectedLabelColor:
-                          FlutterFlowTheme.of(context).secondaryText,
+                      FlutterFlowTheme.of(context).secondaryText,
                       backgroundColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
+                      FlutterFlowTheme.of(context).secondaryBackground,
                       unselectedBackgroundColor:
-                          FlutterFlowTheme.of(context).alternate,
+                      FlutterFlowTheme.of(context).alternate,
                       borderColor: FlutterFlowTheme.of(context).alternate,
-                      borderWidth: 2.0,
-                      borderRadius: 12.0,
-                      elevation: 0.0,
+                      borderWidth: 2,
+                      borderRadius: 12,
+                      elevation: 0,
                       labelPadding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                      EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 12),
                       tabs: [
                         Tab(
                           text: 'Month',
@@ -176,11 +125,11 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                       controller: _model.tabBarController,
                       children: [
                         Container(
-                          width: 100.0,
-                          height: 100.0,
+                          width: 100,
+                          height: 100,
                           decoration: BoxDecoration(
                             color:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            FlutterFlowTheme.of(context).primaryBackground,
                           ),
                           child: SingleChildScrollView(
                             child: Column(
@@ -194,11 +143,11 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                         .secondaryBackground,
                                     boxShadow: [
                                       BoxShadow(
-                                        blurRadius: 3.0,
+                                        blurRadius: 3,
                                         color: Color(0x33000000),
                                         offset: Offset(
-                                          0.0,
-                                          1.0,
+                                          0,
+                                          1,
                                         ),
                                       )
                                     ],
@@ -211,41 +160,41 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                     weekStartsMonday: true,
                                     onChange: (DateTimeRange? newSelectedDate) {
                                       setState(() =>
-                                          _model.calendarSelectedDay1 =
-                                              newSelectedDate);
+                                      _model.calendarSelectedDay1 =
+                                          newSelectedDate);
                                     },
                                     titleStyle: FlutterFlowTheme.of(context)
                                         .titleLarge
                                         .override(
-                                          fontFamily: 'Outfit',
-                                          letterSpacing: 0.0,
-                                        ),
+                                      fontFamily: 'Outfit',
+                                      letterSpacing: 0,
+                                    ),
                                     dayOfWeekStyle: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
-                                          fontFamily: 'Outfit',
-                                          letterSpacing: 0.0,
-                                        ),
+                                      fontFamily: 'Outfit',
+                                      letterSpacing: 0,
+                                    ),
                                     dateStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          letterSpacing: 0.0,
-                                        ),
+                                      fontFamily: 'Plus Jakarta Sans',
+                                      letterSpacing: 0,
+                                    ),
                                     selectedDateStyle:
-                                        FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Plus Jakarta Sans',
-                                              letterSpacing: 0.0,
-                                            ),
+                                    FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                      fontFamily: 'Plus Jakarta Sans',
+                                      letterSpacing: 0,
+                                    ),
                                     inactiveDateStyle:
-                                        FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Outfit',
-                                              letterSpacing: 0.0,
-                                            ),
+                                    FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                      fontFamily: 'Outfit',
+                                      letterSpacing: 0,
+                                    ),
                                   ),
                                 ),
                                 Column(
@@ -254,7 +203,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 12.0, 0.0, 0.0),
+                                          0, 12, 0, 0),
                                       child: ListView(
                                         padding: EdgeInsets.zero,
                                         primary: false,
@@ -263,125 +212,118 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 0.0, 16.0, 12.0),
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                16, 0, 16, 12),
                                             child: Container(
-                                              width: 100.0,
+                                              width: 100,
                                               decoration: BoxDecoration(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
                                                 boxShadow: [
                                                   BoxShadow(
-                                                    blurRadius: 3.0,
+                                                    blurRadius: 3,
                                                     color: Color(0x33000000),
                                                     offset: Offset(
-                                                      0.0,
-                                                      1.0,
+                                                      0,
+                                                      1,
                                                     ),
                                                   )
                                                 ],
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                BorderRadius.circular(8),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsets.all(8.0),
+                                                padding: EdgeInsets.all(8),
                                                 child: Row(
                                                   mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  MainAxisSize.max,
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                                   children: [
                                                     Column(
                                                       mainAxisSize:
-                                                          MainAxisSize.max,
+                                                      MainAxisSize.max,
                                                       mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
+                                                      MainAxisAlignment
+                                                          .center,
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
+                                                      CrossAxisAlignment
+                                                          .start,
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      4.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(4,
+                                                              0, 0, 0),
                                                           child: Text(
                                                             '최대 조위',
                                                             style: FlutterFlowTheme
-                                                                    .of(context)
+                                                                .of(context)
                                                                 .headlineSmall
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
+                                                              fontFamily:
+                                                              'Outfit',
+                                                              letterSpacing:
+                                                              0,
+                                                            ),
                                                           ),
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      4.0,
-                                                                      0.0,
-                                                                      0.0),
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(0,
+                                                              4, 0, 0),
                                                           child: Row(
                                                             mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
+                                                            MainAxisSize
+                                                                .max,
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            8.0,
-                                                                            0.0),
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                    0,
+                                                                    0,
+                                                                    8,
+                                                                    0),
                                                                 child: Card(
                                                                   clipBehavior:
-                                                                      Clip.antiAliasWithSaveLayer,
+                                                                  Clip.antiAliasWithSaveLayer,
                                                                   color: FlutterFlowTheme.of(
-                                                                          context)
+                                                                      context)
                                                                       .accent3,
-                                                                  elevation:
-                                                                      0.0,
+                                                                  elevation: 0,
                                                                   shape:
-                                                                      RoundedRectangleBorder(
+                                                                  RoundedRectangleBorder(
                                                                     borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
+                                                                    BorderRadius
+                                                                        .circular(8),
                                                                   ),
                                                                   child:
-                                                                      Padding(
+                                                                  Padding(
                                                                     padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            8.0,
-                                                                            4.0,
-                                                                            8.0,
-                                                                            4.0),
+                                                                        8,
+                                                                        4,
+                                                                        8,
+                                                                        4),
                                                                     child: Text(
                                                                       '2:20pm',
                                                                       style: FlutterFlowTheme.of(
-                                                                              context)
+                                                                          context)
                                                                           .bodyMedium
                                                                           .override(
-                                                                            fontFamily:
-                                                                                'Plus Jakarta Sans',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).tertiary,
-                                                                            fontSize:
-                                                                                17.0,
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                          ),
+                                                                        fontFamily:
+                                                                        'Plus Jakarta Sans',
+                                                                        color:
+                                                                        FlutterFlowTheme.of(context).tertiary,
+                                                                        fontSize:
+                                                                        17,
+                                                                        letterSpacing:
+                                                                        0,
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
@@ -389,16 +331,16 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                               Text(
                                                                 'XX(m)',
                                                                 style: FlutterFlowTheme.of(
-                                                                        context)
+                                                                    context)
                                                                     .bodySmall
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
-                                                                      fontSize:
-                                                                          15.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                    ),
+                                                                  fontFamily:
+                                                                  'Plus Jakarta Sans',
+                                                                  fontSize:
+                                                                  15,
+                                                                  letterSpacing:
+                                                                  0,
+                                                                ),
                                                               ),
                                                             ],
                                                           ),
@@ -406,34 +348,34 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                       ],
                                                     ),
                                                     Container(
-                                                      width: 50.0,
-                                                      height: 50.0,
+                                                      width: 50,
+                                                      height: 50,
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme
-                                                                .of(context)
+                                                            .of(context)
                                                             .primaryBackground,
                                                         borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
+                                                        BorderRadius
+                                                            .circular(8),
                                                         shape:
-                                                            BoxShape.rectangle,
+                                                        BoxShape.rectangle,
                                                         border: Border.all(
                                                           color: FlutterFlowTheme
-                                                                  .of(context)
+                                                              .of(context)
                                                               .alternate,
-                                                          width: 1.0,
+                                                          width: 1,
                                                         ),
                                                       ),
                                                       alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
+                                                      AlignmentDirectional(
+                                                          0, 0),
                                                       child: Icon(
                                                         Icons.arrow_upward,
                                                         color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        size: 24.0,
+                                                        FlutterFlowTheme.of(
+                                                            context)
+                                                            .primaryText,
+                                                        size: 24,
                                                       ),
                                                     ),
                                                   ],
@@ -446,7 +388,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 12.0, 0.0, 24.0),
+                                          0, 12, 0, 24),
                                       child: ListView(
                                         padding: EdgeInsets.zero,
                                         primary: false,
@@ -455,140 +397,137 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 0.0, 16.0, 12.0),
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                16, 0, 16, 12),
                                             child: Container(
-                                              width: 100.0,
+                                              width: 100,
                                               decoration: BoxDecoration(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
                                                 boxShadow: [
                                                   BoxShadow(
-                                                    blurRadius: 3.0,
+                                                    blurRadius: 3,
                                                     color: Color(0x33000000),
                                                     offset: Offset(
-                                                      0.0,
-                                                      1.0,
+                                                      0,
+                                                      1,
                                                     ),
                                                   )
                                                 ],
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                BorderRadius.circular(8),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsets.all(8.0),
+                                                padding: EdgeInsets.all(8),
                                                 child: Row(
                                                   mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  MainAxisSize.max,
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                                   children: [
                                                     Column(
                                                       mainAxisSize:
-                                                          MainAxisSize.max,
+                                                      MainAxisSize.max,
                                                       mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
+                                                      MainAxisAlignment
+                                                          .center,
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
+                                                      CrossAxisAlignment
+                                                          .start,
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      4.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(4,
+                                                              0, 0, 0),
                                                           child: Text(
                                                             '최소 조위',
                                                             style: FlutterFlowTheme
-                                                                    .of(context)
+                                                                .of(context)
                                                                 .headlineSmall
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
+                                                              fontFamily:
+                                                              'Outfit',
+                                                              letterSpacing:
+                                                              0,
+                                                            ),
                                                           ),
                                                         ),
                                                         Row(
                                                           mainAxisSize:
-                                                              MainAxisSize.max,
+                                                          MainAxisSize.max,
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          8.0,
-                                                                          0.0),
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                  0,
+                                                                  0,
+                                                                  8,
+                                                                  0),
                                                               child: Card(
                                                                 clipBehavior: Clip
                                                                     .antiAliasWithSaveLayer,
                                                                 color: FlutterFlowTheme.of(
-                                                                        context)
+                                                                    context)
                                                                     .accent1,
-                                                                elevation: 0.0,
+                                                                elevation: 0,
                                                                 shape:
-                                                                    RoundedRectangleBorder(
+                                                                RoundedRectangleBorder(
                                                                   borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                      8),
                                                                 ),
                                                                 child: Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          8.0,
-                                                                          4.0,
-                                                                          8.0,
-                                                                          4.0),
+                                                                      8,
+                                                                      4,
+                                                                      8,
+                                                                      4),
                                                                   child: Text(
                                                                     '2:20pm',
                                                                     style: FlutterFlowTheme.of(
-                                                                            context)
+                                                                        context)
                                                                         .bodyMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Plus Jakarta Sans',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primary,
-                                                                          fontSize:
-                                                                              17.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                        ),
+                                                                      fontFamily:
+                                                                      'Plus Jakarta Sans',
+                                                                      color:
+                                                                      FlutterFlowTheme.of(context).primary,
+                                                                      fontSize:
+                                                                      17,
+                                                                      letterSpacing:
+                                                                      0,
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ),
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                  4,
+                                                                  0,
+                                                                  0,
+                                                                  0),
                                                               child: Text(
                                                                 'XX(m)',
                                                                 style: FlutterFlowTheme.of(
-                                                                        context)
+                                                                    context)
                                                                     .bodySmall
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
-                                                                      fontSize:
-                                                                          15.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                    ),
+                                                                  fontFamily:
+                                                                  'Plus Jakarta Sans',
+                                                                  fontSize:
+                                                                  15,
+                                                                  letterSpacing:
+                                                                  0,
+                                                                ),
                                                               ),
                                                             ),
                                                           ],
@@ -596,34 +535,34 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                       ],
                                                     ),
                                                     Container(
-                                                      width: 50.0,
-                                                      height: 50.0,
+                                                      width: 50,
+                                                      height: 50,
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme
-                                                                .of(context)
+                                                            .of(context)
                                                             .primaryBackground,
                                                         borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
+                                                        BorderRadius
+                                                            .circular(8),
                                                         shape:
-                                                            BoxShape.rectangle,
+                                                        BoxShape.rectangle,
                                                         border: Border.all(
                                                           color: FlutterFlowTheme
-                                                                  .of(context)
+                                                              .of(context)
                                                               .alternate,
-                                                          width: 1.0,
+                                                          width: 1,
                                                         ),
                                                       ),
                                                       alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
+                                                      AlignmentDirectional(
+                                                          0, 0),
                                                       child: Icon(
                                                         Icons.arrow_downward,
                                                         color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        size: 24.0,
+                                                        FlutterFlowTheme.of(
+                                                            context)
+                                                            .primaryText,
+                                                        size: 24,
                                                       ),
                                                     ),
                                                   ],
@@ -641,11 +580,11 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                           ),
                         ),
                         Container(
-                          width: 100.0,
-                          height: 100.0,
+                          width: 100,
+                          height: 100,
                           decoration: BoxDecoration(
                             color:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            FlutterFlowTheme.of(context).primaryBackground,
                           ),
                           child: SingleChildScrollView(
                             child: Column(
@@ -659,11 +598,11 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                         .secondaryBackground,
                                     boxShadow: [
                                       BoxShadow(
-                                        blurRadius: 3.0,
+                                        blurRadius: 3,
                                         color: Color(0x33000000),
                                         offset: Offset(
-                                          0.0,
-                                          1.0,
+                                          0,
+                                          1,
                                         ),
                                       )
                                     ],
@@ -676,41 +615,41 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                     weekStartsMonday: true,
                                     onChange: (DateTimeRange? newSelectedDate) {
                                       setState(() =>
-                                          _model.calendarSelectedDay2 =
-                                              newSelectedDate);
+                                      _model.calendarSelectedDay2 =
+                                          newSelectedDate);
                                     },
                                     titleStyle: FlutterFlowTheme.of(context)
                                         .titleLarge
                                         .override(
-                                          fontFamily: 'Outfit',
-                                          letterSpacing: 0.0,
-                                        ),
+                                      fontFamily: 'Outfit',
+                                      letterSpacing: 0,
+                                    ),
                                     dayOfWeekStyle: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
-                                          fontFamily: 'Outfit',
-                                          letterSpacing: 0.0,
-                                        ),
+                                      fontFamily: 'Outfit',
+                                      letterSpacing: 0,
+                                    ),
                                     dateStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          letterSpacing: 0.0,
-                                        ),
+                                      fontFamily: 'Plus Jakarta Sans',
+                                      letterSpacing: 0,
+                                    ),
                                     selectedDateStyle:
-                                        FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Plus Jakarta Sans',
-                                              letterSpacing: 0.0,
-                                            ),
+                                    FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                      fontFamily: 'Plus Jakarta Sans',
+                                      letterSpacing: 0,
+                                    ),
                                     inactiveDateStyle:
-                                        FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Outfit',
-                                              letterSpacing: 0.0,
-                                            ),
+                                    FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                      fontFamily: 'Outfit',
+                                      letterSpacing: 0,
+                                    ),
                                   ),
                                 ),
                                 Column(
@@ -719,7 +658,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 12.0, 0.0, 0.0),
+                                          0, 12, 0, 0),
                                       child: ListView(
                                         padding: EdgeInsets.zero,
                                         primary: false,
@@ -728,125 +667,118 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 0.0, 16.0, 12.0),
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                16, 0, 16, 12),
                                             child: Container(
-                                              width: 100.0,
+                                              width: 100,
                                               decoration: BoxDecoration(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
                                                 boxShadow: [
                                                   BoxShadow(
-                                                    blurRadius: 3.0,
+                                                    blurRadius: 3,
                                                     color: Color(0x33000000),
                                                     offset: Offset(
-                                                      0.0,
-                                                      1.0,
+                                                      0,
+                                                      1,
                                                     ),
                                                   )
                                                 ],
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                BorderRadius.circular(8),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsets.all(8.0),
+                                                padding: EdgeInsets.all(8),
                                                 child: Row(
                                                   mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  MainAxisSize.max,
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                                   children: [
                                                     Column(
                                                       mainAxisSize:
-                                                          MainAxisSize.max,
+                                                      MainAxisSize.max,
                                                       mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
+                                                      MainAxisAlignment
+                                                          .center,
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
+                                                      CrossAxisAlignment
+                                                          .start,
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      4.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(4,
+                                                              0, 0, 0),
                                                           child: Text(
                                                             '최대 조위(m)',
                                                             style: FlutterFlowTheme
-                                                                    .of(context)
+                                                                .of(context)
                                                                 .headlineSmall
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
+                                                              fontFamily:
+                                                              'Outfit',
+                                                              letterSpacing:
+                                                              0,
+                                                            ),
                                                           ),
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      4.0,
-                                                                      0.0,
-                                                                      0.0),
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(0,
+                                                              4, 0, 0),
                                                           child: Row(
                                                             mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
+                                                            MainAxisSize
+                                                                .max,
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            8.0,
-                                                                            0.0),
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                    0,
+                                                                    0,
+                                                                    8,
+                                                                    0),
                                                                 child: Card(
                                                                   clipBehavior:
-                                                                      Clip.antiAliasWithSaveLayer,
+                                                                  Clip.antiAliasWithSaveLayer,
                                                                   color: FlutterFlowTheme.of(
-                                                                          context)
+                                                                      context)
                                                                       .accent3,
-                                                                  elevation:
-                                                                      0.0,
+                                                                  elevation: 0,
                                                                   shape:
-                                                                      RoundedRectangleBorder(
+                                                                  RoundedRectangleBorder(
                                                                     borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
+                                                                    BorderRadius
+                                                                        .circular(8),
                                                                   ),
                                                                   child:
-                                                                      Padding(
+                                                                  Padding(
                                                                     padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            8.0,
-                                                                            4.0,
-                                                                            8.0,
-                                                                            4.0),
+                                                                        8,
+                                                                        4,
+                                                                        8,
+                                                                        4),
                                                                     child: Text(
                                                                       '2:20pm',
                                                                       style: FlutterFlowTheme.of(
-                                                                              context)
+                                                                          context)
                                                                           .bodyMedium
                                                                           .override(
-                                                                            fontFamily:
-                                                                                'Plus Jakarta Sans',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).tertiary,
-                                                                            fontSize:
-                                                                                17.0,
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                          ),
+                                                                        fontFamily:
+                                                                        'Plus Jakarta Sans',
+                                                                        color:
+                                                                        FlutterFlowTheme.of(context).tertiary,
+                                                                        fontSize:
+                                                                        17,
+                                                                        letterSpacing:
+                                                                        0,
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
@@ -854,16 +786,16 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                               Text(
                                                                 'Wed, 03/08/2022',
                                                                 style: FlutterFlowTheme.of(
-                                                                        context)
+                                                                    context)
                                                                     .bodySmall
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
-                                                                      fontSize:
-                                                                          15.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                    ),
+                                                                  fontFamily:
+                                                                  'Plus Jakarta Sans',
+                                                                  fontSize:
+                                                                  15,
+                                                                  letterSpacing:
+                                                                  0,
+                                                                ),
                                                               ),
                                                             ],
                                                           ),
@@ -871,35 +803,35 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                       ],
                                                     ),
                                                     Container(
-                                                      width: 50.0,
-                                                      height: 50.0,
+                                                      width: 50,
+                                                      height: 50,
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme
-                                                                .of(context)
+                                                            .of(context)
                                                             .primaryBackground,
                                                         borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
+                                                        BorderRadius
+                                                            .circular(8),
                                                         shape:
-                                                            BoxShape.rectangle,
+                                                        BoxShape.rectangle,
                                                         border: Border.all(
                                                           color: FlutterFlowTheme
-                                                                  .of(context)
+                                                              .of(context)
                                                               .alternate,
-                                                          width: 1.0,
+                                                          width: 1,
                                                         ),
                                                       ),
                                                       alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
+                                                      AlignmentDirectional(
+                                                          0, 0),
                                                       child: Icon(
                                                         Icons
                                                             .add_photo_alternate_outlined,
                                                         color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        size: 24.0,
+                                                        FlutterFlowTheme.of(
+                                                            context)
+                                                            .primaryText,
+                                                        size: 24,
                                                       ),
                                                     ),
                                                   ],
@@ -912,7 +844,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 12.0, 0.0, 24.0),
+                                          0, 12, 0, 24),
                                       child: ListView(
                                         padding: EdgeInsets.zero,
                                         primary: false,
@@ -921,140 +853,137 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 0.0, 16.0, 12.0),
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                16, 0, 16, 12),
                                             child: Container(
-                                              width: 100.0,
+                                              width: 100,
                                               decoration: BoxDecoration(
                                                 color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
                                                 boxShadow: [
                                                   BoxShadow(
-                                                    blurRadius: 3.0,
+                                                    blurRadius: 3,
                                                     color: Color(0x33000000),
                                                     offset: Offset(
-                                                      0.0,
-                                                      1.0,
+                                                      0,
+                                                      1,
                                                     ),
                                                   )
                                                 ],
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                BorderRadius.circular(8),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsets.all(8.0),
+                                                padding: EdgeInsets.all(8),
                                                 child: Row(
                                                   mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  MainAxisSize.max,
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                                   children: [
                                                     Column(
                                                       mainAxisSize:
-                                                          MainAxisSize.max,
+                                                      MainAxisSize.max,
                                                       mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
+                                                      MainAxisAlignment
+                                                          .center,
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
+                                                      CrossAxisAlignment
+                                                          .start,
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      4.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(4,
+                                                              0, 0, 0),
                                                           child: Text(
                                                             '최소 조위(m)',
                                                             style: FlutterFlowTheme
-                                                                    .of(context)
+                                                                .of(context)
                                                                 .headlineSmall
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
+                                                              fontFamily:
+                                                              'Outfit',
+                                                              letterSpacing:
+                                                              0,
+                                                            ),
                                                           ),
                                                         ),
                                                         Row(
                                                           mainAxisSize:
-                                                              MainAxisSize.max,
+                                                          MainAxisSize.max,
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          8.0,
-                                                                          0.0),
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                  0,
+                                                                  0,
+                                                                  8,
+                                                                  0),
                                                               child: Card(
                                                                 clipBehavior: Clip
                                                                     .antiAliasWithSaveLayer,
                                                                 color: FlutterFlowTheme.of(
-                                                                        context)
+                                                                    context)
                                                                     .accent1,
-                                                                elevation: 0.0,
+                                                                elevation: 0,
                                                                 shape:
-                                                                    RoundedRectangleBorder(
+                                                                RoundedRectangleBorder(
                                                                   borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                      8),
                                                                 ),
                                                                 child: Padding(
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          8.0,
-                                                                          4.0,
-                                                                          8.0,
-                                                                          4.0),
+                                                                      8,
+                                                                      4,
+                                                                      8,
+                                                                      4),
                                                                   child: Text(
                                                                     '2:20pm',
                                                                     style: FlutterFlowTheme.of(
-                                                                            context)
+                                                                        context)
                                                                         .bodyMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Plus Jakarta Sans',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primary,
-                                                                          fontSize:
-                                                                              17.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                        ),
+                                                                      fontFamily:
+                                                                      'Plus Jakarta Sans',
+                                                                      color:
+                                                                      FlutterFlowTheme.of(context).primary,
+                                                                      fontSize:
+                                                                      17,
+                                                                      letterSpacing:
+                                                                      0,
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ),
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                  4,
+                                                                  0,
+                                                                  0,
+                                                                  0),
                                                               child: Text(
                                                                 'Wed, 03/08/2022',
                                                                 style: FlutterFlowTheme.of(
-                                                                        context)
+                                                                    context)
                                                                     .bodySmall
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Plus Jakarta Sans',
-                                                                      fontSize:
-                                                                          15.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                    ),
+                                                                  fontFamily:
+                                                                  'Plus Jakarta Sans',
+                                                                  fontSize:
+                                                                  15,
+                                                                  letterSpacing:
+                                                                  0,
+                                                                ),
                                                               ),
                                                             ),
                                                           ],
@@ -1062,35 +991,35 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                       ],
                                                     ),
                                                     Container(
-                                                      width: 50.0,
-                                                      height: 50.0,
+                                                      width: 50,
+                                                      height: 50,
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme
-                                                                .of(context)
+                                                            .of(context)
                                                             .primaryBackground,
                                                         borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
+                                                        BorderRadius
+                                                            .circular(8),
                                                         shape:
-                                                            BoxShape.rectangle,
+                                                        BoxShape.rectangle,
                                                         border: Border.all(
                                                           color: FlutterFlowTheme
-                                                                  .of(context)
+                                                              .of(context)
                                                               .alternate,
-                                                          width: 1.0,
+                                                          width: 1,
                                                         ),
                                                       ),
                                                       alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
+                                                      AlignmentDirectional(
+                                                          0, 0),
                                                       child: Icon(
                                                         Icons
                                                             .add_photo_alternate_outlined,
                                                         color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        size: 24.0,
+                                                        FlutterFlowTheme.of(
+                                                            context)
+                                                            .primaryText,
+                                                        size: 24,
                                                       ),
                                                     ),
                                                   ],
