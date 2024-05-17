@@ -17,7 +17,6 @@ class TideReceive {
   Future<void> updateTide() async {
     Data.latitude = 35.584923; Data.longitude = 126.514339;
     final request = Uri.parse(getTideURL(Data.latitude, Data.longitude, 20240517));
-    print(request);
     final response = await http.get(request);
 
     if(response.body.contains('No search data')) {

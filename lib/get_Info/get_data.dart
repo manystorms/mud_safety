@@ -32,5 +32,5 @@ class ReceiveData {
   double Pressure = 0;
   double Height = 0;
 
-  double Tide_Gap = 0;
+  double Tide_Gap = 10;
 }
