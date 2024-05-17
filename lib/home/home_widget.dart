@@ -521,7 +521,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                           percent: 0.5,
                                           width:
                                               MediaQuery.sizeOf(context).width *
-                                                  1.0,
+                                                  0.82,
                                           lineHeight: 16.0,
                                           animation: true,
                                           animateFromLastPercent: true,

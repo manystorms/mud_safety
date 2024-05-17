@@ -15,7 +15,6 @@ Future<void> Initial() async {
   while (Data.location_State != 'Enabled') {
     await Future.delayed(Duration(seconds: 1));
   }
-  Data.latitude = 35.584923; Data.longitude = 126.514339;
   TideReceiveClass.updateTide();
   WeatherReceiveClass.updateWeather();
 }

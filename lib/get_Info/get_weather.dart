@@ -1,6 +1,5 @@
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
-import 'package:mud_safety/get_Info/get_gps.dart';
 import 'package:mud_safety/get_Info/get_data.dart';
 import 'dart:async';
 
