@@ -7,15 +7,14 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'flutter_flow/nav/nav.dart';
-import 'package:mud_safety/get_Info/get_pressure.dart';
+import 'package:mud_safety/get_Info/get_data.dart';
 import 'index.dart';
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  PressureReceive();
+  UpdateData();
 
-  WidgetsFlutterBinding.ensureInitialized();
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
 
@@ -88,7 +87,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'Date';
+  String _currentPageName = 'Home';
   late Widget? _currentPage;
 
   @override

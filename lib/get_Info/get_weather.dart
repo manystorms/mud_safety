@@ -15,11 +15,10 @@ class WeatherReveive {
     return URL1+latitude.toString()+URL2+longitude.toString()+URL3+APIkey+URL4;
   }
 
-  Future<void> getWeather() async {
+  Future<void> updateWeather() async {
     GpsReceive gpsReceive = GpsReceive();
-    var gpsLocation = await gpsReceive.getLocation();
 
-    final request = Uri.parse(getWeatherURL(gpsLocation.$1, gpsLocation.$2));
+    final request = Uri.parse(getWeatherURL(Data.latitude, Data.longitude));
     final response = await http.get(request);
 
     if(response.statusCode == 200) {

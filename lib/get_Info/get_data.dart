@@ -1,18 +1,40 @@
 import 'get_gps.dart';
 import 'get_tide.dart';
 import 'get_weather.dart';
+import 'get_pressure.dart';
+import 'dart:async';
 
 ReceiveData Data = ReceiveData();
-int RebootScreen = 0;
 
-Future<void> UpdateData() async {
+void UpdateData() {
+  PressureReceive();
+
+
+  GpsReceive GpsReceiveClass = GpsReceive();
+  TideReceive TideReceiveClass = TideReceive();
+  WeatherReveive WeatherReceiveClass = WeatherReveive();
+
+  Timer.periodic(Duration(seconds: 600), (Timer timer) {
+    GpsReceiveClass.updateLocation();
+  });
+
+  Timer.periodic(Duration(seconds: 1800), (Timer timer) {
+    TideReceiveClass.updateTide();
+  });
+
+  Timer.periodic(Duration(seconds: 60), (Timer timer) {
+    WeatherReceiveClass.updateWeather();
+  });
+}
+
+Future<void> UpdateDaa() async {
   GpsReceive GpsReceiveClass = GpsReceive();
   TideReceive TideReceiveClass = TideReceive();
   print('start');
-  var LocationData = await GpsReceiveClass.getLocation();
-  Data.latitude = LocationData.$1;
-  Data.longitude = LocationData.$2;
-  Data.location_Permission_State = LocationData.$3;
+  //var LocationData = await GpsReceiveClass.getLocation();
+  //Data.latitude = LocationData.$1;
+  //Data.longitude = LocationData.$2;
+  //Data.location_Permission_State = LocationData.$3;
 
   TideReceiveClass.updateTide();
 }

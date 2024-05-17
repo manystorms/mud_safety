@@ -1,4 +1,5 @@
 import 'package:geolocator/geolocator.dart';
+import 'package:mud_safety/get_Info/get_data.dart';
 
 class GpsReceive {
   Future<String> checkPermission() async{
@@ -25,14 +26,15 @@ class GpsReceive {
     return 'Enabled';
   }
 
-  Future<(double, double, String)> getLocation() async {
+  Future<void> updateLocation() async {
     String Permission_State = await checkPermission();
-    print(Permission_State);
     Position position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
 
     // 위도와 경도 업데이트
-    return (position.latitude, position.longitude, Permission_State);
+    Data.latitude = position.latitude;
+    Data.longitude = position.longitude;
+    Data.location_Permission_State = Permission_State;
   }
 }

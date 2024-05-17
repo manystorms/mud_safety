@@ -27,7 +27,6 @@ class HomeWidget extends StatefulWidget {
 
 class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   late HomeModel _model;
-  late StreamController<int> _controller;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = <String, AnimationInfo>{};
 
@@ -35,10 +34,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   void initState() {
     super.initState();
 
-    _controller = StreamController<int>.broadcast();
-    _controller.stream.listen((newValue) {
+    Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
-        RebootScreen = newValue;
       });
     });
 
@@ -91,14 +88,14 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           VisibilityEffect(duration: 1600.ms),
           FadeEffect(
             curve: Curves.easeInOut,
-            delay: 1600.0.ms,
+            delay: 100.0.ms,
             duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
           ),
           MoveEffect(
             curve: Curves.easeInOut,
-            delay: 1600.0.ms,
+            delay: 200.0.ms,
             duration: 600.0.ms,
             begin: Offset(0.0, 70.0),
             end: Offset(0.0, 0.0),
