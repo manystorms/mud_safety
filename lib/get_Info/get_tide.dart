@@ -36,7 +36,7 @@ class TideReceive {
         final obsDateTime = DateTime.parse(obsTime);
         final obsUnixTime = obsDateTime.millisecondsSinceEpoch/1000;
 
-        Data.obs_x.add(obsUnixTime);
+        Data.obs_x.add(obsUnixTime.toInt());
         Data.obs_y.add(double.parse(obsLevel));
       }
     }else{

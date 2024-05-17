@@ -6,6 +6,7 @@ void PressureReceive() {
     if(Data.Pressure != event.pressure) {
       Data.Pressure = event.pressure;
       Data.Height = event.pressure;
+      RebootScreen++;
     }
   });
 }

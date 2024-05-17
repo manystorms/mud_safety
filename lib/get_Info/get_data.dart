@@ -3,6 +3,7 @@ import 'get_tide.dart';
 import 'get_weather.dart';
 
 ReceiveData Data = ReceiveData();
+int RebootScreen = 0;
 
 Future<void> UpdateData() async {
   GpsReceive GpsReceiveClass = GpsReceive();
@@ -22,7 +23,7 @@ class ReceiveData {
   String location_Permission_State = 'a';
 
   String obs_Graph_name = '데이터를 받아오고 있습니다';
-  List<double> obs_x = [0];
+  List<int> obs_x = [0];
   List<double> obs_y = [0];
 
   double Weather_Pressure = 0;

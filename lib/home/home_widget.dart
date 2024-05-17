@@ -27,12 +27,21 @@ class HomeWidget extends StatefulWidget {
 
 class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   late HomeModel _model;
+  late StreamController<int> _controller;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
+
+    _controller = StreamController<int>.broadcast();
+    _controller.stream.listen((newValue) {
+      setState(() {
+        RebootScreen = newValue;
+      });
+    });
+
     _model = createModel(context, () => HomeModel());
 
     animationsMap.addAll({
