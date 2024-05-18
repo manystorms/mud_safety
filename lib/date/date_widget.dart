@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:mud_safety/get_Info/get_tide.dart';
 
 import 'date_model.dart';
 export 'date_model.dart';
@@ -21,6 +22,13 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
   late DateModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  MaximumMinimumTideData _TideData = MaximumMinimumTideData();
+
+  Future<void> updateTide(DateTimeRange SelectedDate) async {
+    TideReceive getTideData = TideReceive();
+    await getTideData.getMaximumMinimumTide(SelectedDate);
+    setState(() {});
+  }
 
   @override
   void initState() {
@@ -159,9 +167,14 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                     weekFormat: false,
                                     weekStartsMonday: true,
                                     onChange: (DateTimeRange? newSelectedDate) {
-                                      setState(() =>
-                                      _model.calendarSelectedDay1 =
-                                          newSelectedDate);
+                                      setState(() {
+                                        _model.calendarSelectedDay1 = newSelectedDate;
+                                        _TideData.MaximumTideVal = 'xx(m)';
+                                        _TideData.MinimumTideVal = 'xx(m)';
+                                        _TideData.MaximumTime = '--:--am';
+                                        _TideData.MinimumTime = '--:--am';
+                                      });
+                                      if(newSelectedDate != null) updateTide(newSelectedDate);
                                     },
                                     titleStyle: FlutterFlowTheme.of(context)
                                         .titleLarge
@@ -329,7 +342,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                                 ),
                                                               ),
                                                               Text(
-                                                                'XX(m)',
+                                                                _TideData.MaximumTideVal,
                                                                 style: FlutterFlowTheme.of(
                                                                     context)
                                                                     .bodySmall
@@ -516,7 +529,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                                   0,
                                                                   0),
                                                               child: Text(
-                                                                'XX(m)',
+                                                                _TideData.MinimumTideVal,
                                                                 style: FlutterFlowTheme.of(
                                                                     context)
                                                                     .bodySmall
@@ -614,9 +627,14 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                     weekFormat: true,
                                     weekStartsMonday: true,
                                     onChange: (DateTimeRange? newSelectedDate) {
-                                      setState(() =>
-                                      _model.calendarSelectedDay2 =
-                                          newSelectedDate);
+                                      setState(() {
+                                        _model.calendarSelectedDay1 = newSelectedDate;
+                                        _TideData.MaximumTideVal = 'xx(m)';
+                                        _TideData.MinimumTideVal = 'xx(m)';
+                                        _TideData.MaximumTime = '--:--am';
+                                        _TideData.MinimumTime = '--:--am';
+                                      });
+                                      if(newSelectedDate != null) updateTide(newSelectedDate);
                                     },
                                     titleStyle: FlutterFlowTheme.of(context)
                                         .titleLarge
@@ -765,7 +783,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                                         8,
                                                                         4),
                                                                     child: Text(
-                                                                      '2:20pm',
+                                                                      _TideData.MaximumTime,
                                                                       style: FlutterFlowTheme.of(
                                                                           context)
                                                                           .bodyMedium
@@ -945,7 +963,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                                       8,
                                                                       4),
                                                                   child: Text(
-                                                                    '2:20pm',
+                                                                    _TideData.MinimumTime,
                                                                     style: FlutterFlowTheme.of(
                                                                         context)
                                                                         .bodyMedium

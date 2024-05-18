@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart' as xml;
 import 'package:mud_safety/get_Info/get_data.dart';
@@ -89,24 +90,26 @@ class TideReceive {
     }
   }
 
-  Future<MaximumMinimumTideData> getMaximumMinimumTide(int Date) async {
+  Future<MaximumMinimumTideData> getMaximumMinimumTide(DateTimeRange SelectedDate) async {
+    int Date = 0;
     final request = Uri.parse(getTideURL(Data.latitude, Data.longitude, Date));
-    final response = await http.get(request);
-
+    //final response = await http.get(request);
+    print(SelectedDate);
     MaximumMinimumTideData res = MaximumMinimumTideData();
-
+    await Future.delayed(Duration(seconds: 3));
+    res.MaximumTideVal = '5(m)';
+    res.MinimumTideVal = '-1(m)';
+    res.MaximumTime = '2:20pm';
+    res.MinimumTime = '10:50am';
+    print('a');
     return res;
   }
 }
 
 class MaximumMinimumTideData {
-  double MaximumTideVal = 0;
-  int MaximumTideMin = 0;
-  int MaximumTideSec = 0;
-  String MaximumAmPm = 'Loading';
+  String MaximumTideVal = 'xx(m)';
+  String MaximumTime = '--:--am';
 
-  double MinimumTideVal = 0;
-  int MinimumTideMin = 0;
-  int MinimumTideSec = 0;
-  String MinimumAmPm = 'Loading';
+  String MinimumTideVal = 'xx(m)';
+  String MinimumTime = '--:--am';
 }
