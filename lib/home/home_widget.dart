@@ -46,10 +46,11 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
 
     settingBar(time.toDouble(), 0, 3600);
 
-    int Hour = time~/3600; time -= Hour*3600;
-    int Min = time~/60; time -= Min*60;
-    int Sec = time;
+    final Hour = time~/3600; time -= Hour*3600;
+    final Min = time~/60; time -= Min*60;
+    final Sec = time;
 
+    _TimerWidget = Hour.toString()+':'+Min.toString()+':'+Sec.toString();
   }
 
   @override
@@ -736,8 +737,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                               child: FlutterFlowLineChart(
                                                 data: [
                                                   FFLineChartData(
-                                                    xData: Data.obs_x,
-                                                    yData: Data.obs_y,
+                                                    xData: Data.obs_Graph_x,
+                                                    yData: Data.obs_Graph_y,
                                                     settings: LineChartBarData(
                                                       color:
                                                           FlutterFlowTheme.of(

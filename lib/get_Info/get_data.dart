@@ -67,25 +67,14 @@ class ReceiveData {
   int NextDayDate = 20240518; //yyyy-MM-dd
 }
 
-void updateTideGraphData() {
-  int StartTime = getUnixTime(); //UnixTime 기준
-  int EndTime = StartTime+3600*4;
-
-  for(int i = 0; i < Data.obs_x.length; i++) {
-    if(Data.obs_x[i] >= StartTime && Data.obs_x[i] <= EndTime) {
-      Data.obs_Graph_x.add(Data.obs_x[i]);
-      Data.obs_Graph_y.add(Data.obs_y[i]+0.5);
-    }
-  }
-}
-
 int getUnixTime() {
-  return 0;
+  DateTime now = DateTime.now();
+  return now.millisecondsSinceEpoch ~/ 1000;
 }
 
 String getToday() {
   DateTime now = DateTime.now();
-  DateFormat formatter = DateFormat('yyyy-MM-dd');
+  DateFormat formatter = DateFormat('yyyyMMdd');
   String strToday = formatter.format(now);
   return strToday;
 }

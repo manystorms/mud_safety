@@ -43,7 +43,8 @@ class TideReceive {
         Data.obs_x.add(obsUnixTime.toInt());
         Data.obs_y.add(double.parse(obsLevel));
       }
-      updateNextDayTide();
+      await updateNextDayTide();
+      updateTideGraphData();
     }else{
       Data.obs_Graph_name = '데이터를 받아오고 있습니다';
     }
@@ -71,6 +72,20 @@ class TideReceive {
       }
     }else{
       Data.obs_Graph_name = '데이터를 받아오고 있습니다';
+    }
+  }
+
+  void updateTideGraphData() {
+    int StartTime = getUnixTime(); //UnixTime 기준
+    int EndTime = StartTime+3600*12;
+    Data.obs_Graph_x.clear();
+    Data.obs_Graph_y.clear();
+
+    for(int i = 0; i < Data.obs_x.length; i++) {
+      if(Data.obs_x[i] >= StartTime && Data.obs_x[i] <= EndTime) {
+        Data.obs_Graph_x.add(Data.obs_x[i]);
+        Data.obs_Graph_y.add(Data.obs_y[i]);
+      }
     }
   }
 
