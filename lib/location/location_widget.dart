@@ -9,6 +9,8 @@ import 'package:provider/provider.dart';
 import 'location_model.dart';
 export 'location_model.dart';
 
+import 'package:mud_safety/get_Info/get_data.dart';
+
 class LocationWidget extends StatefulWidget {
   const LocationWidget({super.key});
 
@@ -158,7 +160,7 @@ class _LocationWidgetState extends State<LocationWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Location Name',
+                                          'Location Name ${Data.latitude}, ${Data.longitude}',
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
                                               .override(
