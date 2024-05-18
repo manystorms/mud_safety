@@ -30,12 +30,26 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = <String, AnimationInfo>{};
 
+  double _TimerBar = 0.5;
+  double _HeightBar = 0.5;
+  double _TideBar = 0.5;
+
+  double settingBar(double val, double MinimumRange, double MaximumRange) {
+    if(val < MinimumRange) val = MinimumRange;
+    else if(val > MaximumRange) val = MaximumRange;
+
+    return (val-MinimumRange)/(MaximumRange-MinimumRange);
+  }
+
   @override
   void initState() {
     super.initState();
 
     Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
+        //_TimerBar = ;
+        _HeightBar = settingBar(Data.Height, -7, 7);
+        _TideBar = settingBar(Data.Tide_Gap, -7, 7);
       });
     });
 
@@ -356,7 +370,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                             alignment: AlignmentDirectional(
                                                 -0.03, 0.17),
                                             child: CircularPercentIndicator(
-                                              percent: 0.5,
+                                              percent: _TimerBar,
                                               radius: 125.0,
                                               lineWidth: 20.0,
                                               animation: true,
@@ -518,7 +532,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 0.0),
                                         child: LinearPercentIndicator(
-                                          percent: 0.5,
+                                          percent: _HeightBar,
                                           width:
                                               MediaQuery.sizeOf(context).width *
                                                   0.82,
@@ -647,7 +661,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 0.0),
                                         child: LinearPercentIndicator(
-                                          percent: 0.5,
+                                          percent: _TideBar,
                                           width:
                                               MediaQuery.sizeOf(context).width *
                                                   0.82,
