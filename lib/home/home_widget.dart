@@ -1,11 +1,9 @@
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
-import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -33,6 +31,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   double _TimerBar = 0.5;
   double _HeightBar = 0.5;
   double _TideBar = 0.5;
+  String _TimerWidget = '--:--:--';
 
   double settingBar(double val, double MinimumRange, double MaximumRange) {
     if(val < MinimumRange) val = MinimumRange;
@@ -41,13 +40,25 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
     return (val-MinimumRange)/(MaximumRange-MinimumRange);
   }
 
+  void updateTimer() {
+    int nowTime = getUnixTime(); //UnixTime
+    int time = Data.AlertTime-nowTime;
+
+    settingBar(time.toDouble(), 0, 3600);
+
+    int Hour = time~/3600; time -= Hour*3600;
+    int Min = time~/60; time -= Min*60;
+    int Sec = time;
+
+  }
+
   @override
   void initState() {
     super.initState();
 
     Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
-        //_TimerBar = ;
+        updateTimer();
         _HeightBar = settingBar(Data.Height, -7, 7);
         _TideBar = settingBar(Data.Tide_Gap, -7, 7);
       });
@@ -384,38 +395,19 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                             ),
                                           ),
                                           Align(
-                                            alignment: AlignmentDirectional(
-                                                -0.02, 0.03),
-                                            child: FlutterFlowTimer(
-                                              initialTime:
-                                                  _model.timerInitialTimeMs,
-                                              getDisplayTime: (value) =>
-                                                  StopWatchTimer.getDisplayTime(
-                                                value,
-                                                hours: true,
-                                                milliSecond: false,
-                                              ),
-                                              controller:
-                                                  _model.timerController,
-                                              updateStateInterval:
-                                                  Duration(milliseconds: 1000),
-                                              onChanged: (value, displayTime,
-                                                  shouldUpdate) {
-                                                _model.timerMilliseconds =
-                                                    value;
-                                                _model.timerValue = displayTime;
-                                                if (shouldUpdate)
-                                                  setState(() {});
-                                              },
-                                              textAlign: TextAlign.start,
+                                            alignment:
+                                            AlignmentDirectional(0, 0),
+                                            child: Text(
+                                              _TimerWidget,
                                               style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineSmall
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        fontSize: 35.0,
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .override(
+                                                fontFamily:
+                                                'Plus Jakarta Sans',
+                                                fontSize: 40,
+                                                letterSpacing: 0,
+                                              ),
                                             ),
                                           ),
                                         ],

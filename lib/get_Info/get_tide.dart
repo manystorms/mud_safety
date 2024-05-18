@@ -20,7 +20,7 @@ class TideReceive {
       return;
     }
 
-    final request = Uri.parse(getTideURL(Data.latitude, Data.longitude, 20240517));
+    final request = Uri.parse(getTideURL(Data.latitude, Data.longitude, Data.TodayDate));
     final response = await http.get(request);
 
     if(response.body.contains('No search data')) {
@@ -32,6 +32,32 @@ class TideReceive {
       Data.obs_Graph_name = '시간별 조위';
       Data.obs_x.clear();
       Data.obs_y.clear();
+
+      for (var data in dataList) {
+        final obsTime = data.findElements('obs_time').single.text;
+        final obsLevel = data.findElements('obs_level').single.text;
+
+        final obsDateTime = DateTime.parse(obsTime);
+        final obsUnixTime = obsDateTime.millisecondsSinceEpoch/1000;
+
+        Data.obs_x.add(obsUnixTime.toInt());
+        Data.obs_y.add(double.parse(obsLevel));
+      }
+      updateNextDayTide();
+    }else{
+      Data.obs_Graph_name = '데이터를 받아오고 있습니다';
+    }
+  }
+
+  Future<void> updateNextDayTide() async {
+    final request = Uri.parse(getTideURL(Data.latitude, Data.longitude, Data.NextDayDate));
+    final response = await http.get(request);
+
+    if(response.body.contains('No search data')) {
+      Data.obs_Graph_name = '갯벌에 있는지 확인해 주십시오';
+    }else if (response.statusCode == 200) {
+      final document = xml.XmlDocument.parse(response.body);
+      final dataList = document.findAllElements('data');
 
       for (var data in dataList) {
         final obsTime = data.findElements('obs_time').single.text;
