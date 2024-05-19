@@ -92,16 +92,59 @@ class TideReceive {
 
   Future<MaximumMinimumTideData> getMaximumMinimumTide(DateTimeRange SelectedDate) async {
     int Date = 0;
-    final request = Uri.parse(getTideURL(Data.latitude, Data.longitude, Date));
-    //final response = await http.get(request);
-    print(SelectedDate);
     MaximumMinimumTideData res = MaximumMinimumTideData();
-    await Future.delayed(Duration(seconds: 3));
-    res.MaximumTideVal = '5(m)';
-    res.MinimumTideVal = '-1(m)';
-    res.MaximumTime = '2:20pm';
-    res.MinimumTime = '10:50am';
-    print('a');
+
+    if(Data.location_State != 'Enabled') {
+      res.MaximumTideVal = '위치 권한이 허용되지 않았습니다';
+      res.MinimumTideVal = '위치 권한이 허용되지 않았습니다';
+      res.MaximumTime = '--:--am';
+      res.MinimumTime = '--:--am';
+    }
+
+    final request = Uri.parse(getTideURL(Data.latitude, Data.longitude, Date));
+    final response = await http.get(request);
+
+    if(response.body.contains('No search data')) {
+      res.MaximumTideVal = '갯벌에 있는지 확인해 주세요';
+      res.MinimumTideVal = '갯벌에 있는지 확인해 주세요';
+      res.MaximumTime = '--:--am';
+      res.MinimumTime = '--:--am';
+    }else if (response.statusCode == 200) {
+      final document = xml.XmlDocument.parse(response.body);
+      final dataList = document.findAllElements('data');
+
+      double MaximumTideVal = -1000;
+      DateTime MaximumTideTime;
+      double MinimumTideVal = 1000;
+      DateTime MinimumTideTime;
+
+      int NowUnixTime = getUnixTime();
+
+      for (var data in dataList) {
+        final obsTime = data.findElements('obs_time').single.text;
+        final obsLevel = data.findElements('obs_level').single.text;
+
+        final obsDateTime = DateTime.parse(obsTime);
+        final obsUnixTime = obsDateTime.millisecondsSinceEpoch/1000;
+
+        if(obsUnixTime < NowUnixTime) continue;
+
+        if(double.parse(obsLevel) > MaximumTideVal) {
+          MaximumTideVal = double.parse(obsLevel);
+          MaximumTideTime = obsDateTime;
+        }
+
+        if(double.parse(obsLevel) < MinimumTideVal) {
+          MinimumTideVal = double.parse(obsLevel);
+          MinimumTideTime = obsDateTime;
+        }
+      }
+
+      res.MaximumTideVal = (MaximumTideVal/100).toString()+'(m)';
+      res.MinimumTideVal = (MinimumTideVal/100).toString()+'(m)';
+      //res.MaximumTime = MaximumTideTime.toString();
+    }
+
     return res;
   }
 }
