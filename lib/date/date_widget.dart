@@ -802,7 +802,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                                 ),
                                                               ),
                                                               Text(
-                                                                _TideData.MinimumTideVal,
+                                                                _TideData.MaximumTideVal,
                                                                 style: FlutterFlowTheme.of(
                                                                     context)
                                                                     .bodySmall

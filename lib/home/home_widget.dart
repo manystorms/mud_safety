@@ -44,7 +44,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
     int nowTime = getUnixTime(); //UnixTime
     int time = Data.AlertTime-nowTime;
 
-    settingBar(time.toDouble(), 0, 3600);
+    _TimerBar = settingBar(time.toDouble(), 0, 3600);
 
     final Hour = time~/3600; time -= Hour*3600;
     final Min = time~/60; time -= Min*60;
