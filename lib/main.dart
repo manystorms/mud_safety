@@ -8,11 +8,13 @@ import 'flutter_flow/flutter_flow_util.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'package:mud_safety/get_Info/get_data.dart';
+import 'package:mud_safety/get_Info/send_Alarm.dart';
 import 'index.dart';
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  initNotification();
   UpdateData();
 
   GoRouter.optionURLReflectsImperativeAPIs = true;

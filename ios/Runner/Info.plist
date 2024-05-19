@@ -46,10 +46,10 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>위치 정보가 필요합니다.</string>
+	<string>조석, 날씨 데이터를 불러오기 위해 위치 정보가 필요합니다</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>위치 정보가 필요합니다.</string>
+	<string>조석, 날씨 데이터를 불러오기 위해 위치 정보가 필요합니다</string>
 	<key>NSBarometerUsageDescription</key>
-    <string>We need your permission to access the barometer sensor.</string>
+    <string>사용자의 정확한 고도를 측정하기 위해 기압 센서의 데이터가 필요합니다</string>
 </dict>
 </plist>
