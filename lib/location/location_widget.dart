@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:mud_safety/get_Info/get_data.dart';
 import 'location_model.dart';
 export 'location_model.dart';
 
@@ -132,7 +133,7 @@ class _LocationWidgetState extends State<LocationWidget> {
                                                 .googleMapsCenter = latLng,
                                             initialLocation: _model
                                                     .googleMapsCenter ??=
-                                                LatLng(13.106061, -59.613158),
+                                                LatLng(Data.latitude, Data.longitude),
                                             markerColor:
                                                 GoogleMarkerColor.violet,
                                             mapType: MapType.normal,
