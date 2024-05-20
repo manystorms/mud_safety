@@ -85,18 +85,22 @@ class TideReceive {
         "${startDate.month.toString().padLeft(2, '0')}${startDate.day.toString().padLeft(2, '0')}";
 
     MaximumMinimumTideData res = MaximumMinimumTideData();
-    res.MaximumTideVal.clear();
-    res.MaximumTideTime.clear();
-    res.MinimumTideVal.clear();
-    res.MinimumTideTime.clear();
 
     if(Data.location_State != 'Enabled') {
-      res.MaximumTideTime.add('위치 권한이 허용되지 않음');
-      res.MinimumTideTime.add('위치 권한이 허용되지 않음');
-      res.MaximumTideVal.add('--:--am');
-      res.MinimumTideVal.add('--:--am');
+      res.TideState = ['위치 권한이 허용되지 않았습니다'];
       return res;
     }
+
+    res.TideState.clear();
+    res.TideVal.clear();
+    res.TideTime.clear();
+
+    for(int i = 1; i <= 5; i++) {
+      res.TideState.add('a');
+      res.TideVal.add('b');
+      res.TideTime.add('c');
+    }
+    if(1 == 1) return res;
 
     final request = Uri.parse(getTideForecastURL('DT_0001', Date));
     final response = await http.get(request);
@@ -127,12 +131,14 @@ class TideReceive {
         String StrTime = Hour.toString()+':'+(Min < 10 ? '0':'')+Min.toString()+AmPm;
         double val = double.parse(extractedData[i]['tph_level'])/100;
 
+        res.TideVal.add(val.toString()+'(m)');
+        res.TideTime.add(StrTime);
+
         if(extractedData[i]['hl_code'] == '고조') {
-          res.MaximumTideVal.add(val.toString()+'(m)');
-          res.MaximumTideTime.add(StrTime);
+          res.TideState.add('최대 조위');
+
         }else{
-          res.MinimumTideVal.add(val.toString()+'(m)');
-          res.MinimumTideTime.add(StrTime);
+          res.TideState.add('최소 조위');
         }
       }
     }
@@ -154,8 +160,8 @@ class ObsGraphData {
 }
 
 class MaximumMinimumTideData {
-  List<String> MaximumTideVal = ['xx(m)'];
-  List<String> MaximumTideTime = ['--:--am'];
-  List<String> MinimumTideVal = ['xx(m)'];
-  List<String> MinimumTideTime = ['--:--am'];
+  List<String> TideState = ['최대 조위'];
+  List<String> TideVal = ['xx(m)'];
+  List<String> TideTime = ['--:--am'];
+
 }
