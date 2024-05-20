@@ -19,6 +19,7 @@ class WeatherReveive {
 
     final request = Uri.parse(getWeatherURL(Data.latitude, Data.longitude));
     final response = await http.get(request);
+    print(response.body);
 
     if(response.statusCode == 200) {
       final document = xml.XmlDocument.parse(response.body);
@@ -29,6 +30,9 @@ class WeatherReveive {
       // pressure의 value 추출
       String? pressure = document.findAllElements('pressure').first.getAttribute('value');
       if(pressure != null) Data.Weather_Pressure = double.parse(pressure);
+
+      String? humidity = document.findAllElements('humidity').first.getAttribute('value');
+      if(humidity != null) Data.Weather_Humidity = double.parse(humidity);
 
       Data.Weather_Error = 0;
     }else{
