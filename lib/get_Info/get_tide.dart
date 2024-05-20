@@ -125,7 +125,7 @@ class TideReceive {
         if(Hour >= 12) {
           Hour -= 12; AmPm = 'pm';
         }
-        String StrTime = Hour.toString()+':'+Min.toString()+AmPm;
+        String StrTime = Hour.toString()+':'+(Min < 10 ? '0':'')+Min.toString()+AmPm;
         double val = double.parse(extractedData[i]['tph_level'])/100;
 
         if(extractedData[i]['hl_code'] == '고조') {
