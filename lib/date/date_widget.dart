@@ -27,13 +27,27 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
   Future<void> updateTide(DateTimeRange SelectedDate) async {
     TideReceive getTideData = TideReceive();
     _TideData = await getTideData.getMaximumMinimumTide(SelectedDate);
+
+    while(_TideData.MaximumTideTime.length <= 2) _TideData.MaximumTideTime.add('a');
+    while(_TideData.MinimumTideTime.length <= 2) _TideData.MinimumTideTime.add('a');
+    while(_TideData.MaximumTideVal.length <= 2) _TideData.MaximumTideVal.add('a');
+    while(_TideData.MinimumTideVal.length <= 2) _TideData.MinimumTideVal.add('a');
+
     setState(() {});
+  }
+
+  void resetTideData() {
+    _TideData.MaximumTideVal = ['xx(m)', 'xx(m)'];
+    _TideData.MaximumTideTime = ['데이터를 받아오는 중', '데이터를 받아오는 중'];
+    _TideData.MinimumTideVal = ['xx(m)', 'xx(m)'];
+    _TideData.MinimumTideTime = ['데이터를 받아오는 중', '데이터를 받아오는 중'];
   }
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => DateModel());
+    resetTideData();
 
     _model.tabBarController = TabController(
       vsync: this,
@@ -169,10 +183,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                     onChange: (DateTimeRange? newSelectedDate) {
                                       setState(() {
                                         _model.calendarSelectedDay1 = newSelectedDate;
-                                        _TideData.MaximumTideVal = 'xx(m)';
-                                        _TideData.MinimumTideVal = 'xx(m)';
-                                        _TideData.MaximumTime = '--:--am';
-                                        _TideData.MinimumTime = '--:--am';
+                                        resetTideData();
                                       });
                                       if(newSelectedDate != null) updateTide(newSelectedDate);
                                     },
@@ -323,7 +334,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                                         8,
                                                                         4),
                                                                     child: Text(
-                                                                      _TideData.MaximumTime,
+                                                                      _TideData.MaximumTideTime[0],
                                                                       style: FlutterFlowTheme.of(
                                                                           context)
                                                                           .bodyMedium
@@ -342,7 +353,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                                 ),
                                                               ),
                                                               Text(
-                                                                _TideData.MaximumTideVal,
+                                                                _TideData.MaximumTideVal[0],
                                                                 style: FlutterFlowTheme.of(
                                                                     context)
                                                                     .bodySmall
@@ -502,7 +513,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                                       8,
                                                                       4),
                                                                   child: Text(
-                                                                    _TideData.MinimumTime,
+                                                                    _TideData.MinimumTideTime[0],
                                                                     style: FlutterFlowTheme.of(
                                                                         context)
                                                                         .bodyMedium
@@ -529,7 +540,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                                   0,
                                                                   0),
                                                               child: Text(
-                                                                _TideData.MinimumTideVal,
+                                                                _TideData.MinimumTideVal[0],
                                                                 style: FlutterFlowTheme.of(
                                                                     context)
                                                                     .bodySmall
@@ -629,10 +640,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                     onChange: (DateTimeRange? newSelectedDate) {
                                       setState(() {
                                         _model.calendarSelectedDay1 = newSelectedDate;
-                                        _TideData.MaximumTideVal = 'xx(m)';
-                                        _TideData.MinimumTideVal = 'xx(m)';
-                                        _TideData.MaximumTime = '--:--am';
-                                        _TideData.MinimumTime = '--:--am';
+                                        resetTideData();
                                       });
                                       if(newSelectedDate != null) updateTide(newSelectedDate);
                                     },
@@ -783,7 +791,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                                         8,
                                                                         4),
                                                                     child: Text(
-                                                                      _TideData.MaximumTime,
+                                                                      _TideData.MaximumTideTime[0],
                                                                       style: FlutterFlowTheme.of(
                                                                           context)
                                                                           .bodyMedium
@@ -802,7 +810,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                                 ),
                                                               ),
                                                               Text(
-                                                                _TideData.MaximumTideVal,
+                                                                _TideData.MaximumTideVal[0],
                                                                 style: FlutterFlowTheme.of(
                                                                     context)
                                                                     .bodySmall
@@ -963,7 +971,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                                       8,
                                                                       4),
                                                                   child: Text(
-                                                                    _TideData.MinimumTime,
+                                                                    _TideData.MinimumTideTime[0],
                                                                     style: FlutterFlowTheme.of(
                                                                         context)
                                                                         .bodyMedium
@@ -990,7 +998,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                                                   0,
                                                                   0),
                                                               child: Text(
-                                                                _TideData.MinimumTideVal,
+                                                                _TideData.MinimumTideVal[0],
                                                                 style: FlutterFlowTheme.of(
                                                                     context)
                                                                     .bodySmall
