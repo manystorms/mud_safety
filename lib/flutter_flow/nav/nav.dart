@@ -33,44 +33,44 @@ class AppStateNotifier extends ChangeNotifier {
 }
 
 GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
-      initialLocation: '/',
-      debugLogDiagnostics: true,
-      refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => NavBarPage(),
-      routes: [
-        FFRoute(
-          name: '_initialize',
-          path: '/',
-          builder: (context, _) => NavBarPage(),
-        ),
-        FFRoute(
-          name: 'Home',
-          path: '/home',
-          builder: (context, params) =>
-              params.isEmpty ? NavBarPage(initialPage: 'Home') : HomeWidget(),
-        ),
-        FFRoute(
-          name: 'Date',
-          path: '/date',
-          builder: (context, params) =>
-              params.isEmpty ? NavBarPage(initialPage: 'Date') : DateWidget(),
-        ),
-        FFRoute(
-          name: 'Location',
-          path: '/location',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'Location')
-              : LocationWidget(),
-        )
-      ].map((r) => r.toRoute(appStateNotifier)).toList(),
-    );
+  initialLocation: '/',
+  debugLogDiagnostics: true,
+  refreshListenable: appStateNotifier,
+  errorBuilder: (context, state) => NavBarPage(),
+  routes: [
+    FFRoute(
+      name: '_initialize',
+      path: '/',
+      builder: (context, _) => NavBarPage(),
+    ),
+    FFRoute(
+      name: 'Home',
+      path: '/home',
+      builder: (context, params) =>
+      params.isEmpty ? NavBarPage(initialPage: 'Home') : HomeWidget(),
+    ),
+    FFRoute(
+      name: 'Date',
+      path: '/date',
+      builder: (context, params) =>
+      params.isEmpty ? NavBarPage(initialPage: 'Date') : DateWidget(),
+    ),
+    FFRoute(
+      name: 'Setting',
+      path: '/setting',
+      builder: (context, params) => params.isEmpty
+          ? NavBarPage(initialPage: 'Setting')
+          : SettingWidget(),
+    )
+  ].map((r) => r.toRoute(appStateNotifier)).toList(),
+);
 
 extension NavParamExtensions on Map<String, String?> {
   Map<String, String> get withoutNulls => Map.fromEntries(
-        entries
-            .where((e) => e.value != null)
-            .map((e) => MapEntry(e.key, e.value!)),
-      );
+    entries
+        .where((e) => e.value != null)
+        .map((e) => MapEntry(e.key, e.value!)),
+  );
 }
 
 extension NavigationExtensions on BuildContext {
@@ -109,30 +109,30 @@ class FFParameters {
   // present is the special extra parameter reserved for the transition info.
   bool get isEmpty =>
       state.allParams.isEmpty ||
-      (state.allParams.length == 1 &&
-          state.extraMap.containsKey(kTransitionInfoKey));
+          (state.allParams.length == 1 &&
+              state.extraMap.containsKey(kTransitionInfoKey));
   bool isAsyncParam(MapEntry<String, dynamic> param) =>
       asyncParams.containsKey(param.key) && param.value is String;
   bool get hasFutures => state.allParams.entries.any(isAsyncParam);
   Future<bool> completeFutures() => Future.wait(
-        state.allParams.entries.where(isAsyncParam).map(
+    state.allParams.entries.where(isAsyncParam).map(
           (param) async {
-            final doc = await asyncParams[param.key]!(param.value)
-                .onError((_, __) => null);
-            if (doc != null) {
-              futureParamValues[param.key] = doc;
-              return true;
-            }
-            return false;
-          },
-        ),
-      ).onError((_, __) => [false]).then((v) => v.every((e) => e));
+        final doc = await asyncParams[param.key]!(param.value)
+            .onError((_, __) => null);
+        if (doc != null) {
+          futureParamValues[param.key] = doc;
+          return true;
+        }
+        return false;
+      },
+    ),
+  ).onError((_, __) => [false]).then((v) => v.every((e) => e));
 
   dynamic getParam<T>(
-    String paramName,
-    ParamType type, {
-    bool isList = false,
-  }) {
+      String paramName,
+      ParamType type, {
+        bool isList = false,
+      }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
     }
@@ -171,44 +171,44 @@ class FFRoute {
   final List<GoRoute> routes;
 
   GoRoute toRoute(AppStateNotifier appStateNotifier) => GoRoute(
-        name: name,
-        path: path,
-        pageBuilder: (context, state) {
-          fixStatusBarOniOS16AndBelow(context);
-          final ffParams = FFParameters(state, asyncParams);
-          final page = ffParams.hasFutures
-              ? FutureBuilder(
-                  future: ffParams.completeFutures(),
-                  builder: (context, _) => builder(context, ffParams),
-                )
-              : builder(context, ffParams);
-          final child = page;
+    name: name,
+    path: path,
+    pageBuilder: (context, state) {
+      fixStatusBarOniOS16AndBelow(context);
+      final ffParams = FFParameters(state, asyncParams);
+      final page = ffParams.hasFutures
+          ? FutureBuilder(
+        future: ffParams.completeFutures(),
+        builder: (context, _) => builder(context, ffParams),
+      )
+          : builder(context, ffParams);
+      final child = page;
 
-          final transitionInfo = state.transitionInfo;
-          return transitionInfo.hasTransition
-              ? CustomTransitionPage(
-                  key: state.pageKey,
-                  child: child,
-                  transitionDuration: transitionInfo.duration,
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) =>
-                          PageTransition(
-                    type: transitionInfo.transitionType,
-                    duration: transitionInfo.duration,
-                    reverseDuration: transitionInfo.duration,
-                    alignment: transitionInfo.alignment,
-                    child: child,
-                  ).buildTransitions(
-                    context,
-                    animation,
-                    secondaryAnimation,
-                    child,
-                  ),
-                )
-              : MaterialPage(key: state.pageKey, child: child);
-        },
-        routes: routes,
-      );
+      final transitionInfo = state.transitionInfo;
+      return transitionInfo.hasTransition
+          ? CustomTransitionPage(
+        key: state.pageKey,
+        child: child,
+        transitionDuration: transitionInfo.duration,
+        transitionsBuilder:
+            (context, animation, secondaryAnimation, child) =>
+            PageTransition(
+              type: transitionInfo.transitionType,
+              duration: transitionInfo.duration,
+              reverseDuration: transitionInfo.duration,
+              alignment: transitionInfo.alignment,
+              child: child,
+            ).buildTransitions(
+              context,
+              animation,
+              secondaryAnimation,
+              child,
+            ),
+      )
+          : MaterialPage(key: state.pageKey, child: child);
+    },
+    routes: routes,
+  );
 }
 
 class TransitionInfo {
@@ -242,9 +242,9 @@ class RootPageContext {
   }
 
   static Widget wrap(Widget child, {String? errorRoute}) => Provider.value(
-        value: RootPageContext(true, errorRoute),
-        child: child,
-      );
+    value: RootPageContext(true, errorRoute),
+    child: child,
+  );
 }
 
 extension GoRouterLocationExtension on GoRouter {

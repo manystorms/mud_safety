@@ -5,6 +5,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:provider/provider.dart';
 import 'package:mud_safety/get_Info/get_tide.dart';
 import 'package:mud_safety/get_Info/send_Alarm.dart';
@@ -94,41 +96,50 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
-                child: Stack(
-                  children: [
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Container(
-                        width: 243.0,
-                        height: 80.0,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(24.0),
-                        ),
-                        child: Stack(
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0.85, 0.21),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed('Date_ListView');
-                                },
-                                child: Icon(
-                                  Icons.location_on_outlined,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 24.0,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                child:Align(
+                  alignment: AlignmentDirectional(0.9, 0.0),
+                  child: FlutterFlowDropDown<String>(
+                    controller: _model.dropDownValueController ??=
+                        FormFieldController<String>(null),
+                    options: ['Option 1'],
+                    onChanged: (val) =>
+                        setState(() => _model.dropDownValue = val),
+                    width: 124.0,
+                    height: 56.0,
+                    searchHintTextStyle:
+                    FlutterFlowTheme.of(context).labelMedium.override(
+                      fontFamily: 'Outfit',
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      letterSpacing: 0.0,
                     ),
-                  ],
+                    searchTextStyle:
+                    FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Plus Jakarta Sans',
+                      letterSpacing: 0.0,
+                    ),
+                    textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Plus Jakarta Sans',
+                      letterSpacing: 0.0,
+                    ),
+                    hintText: '검색 위치',
+                    searchHintText: 'Search for an item...',
+                    icon: Icon(
+                      Icons.keyboard_arrow_down_rounded,
+                      color: FlutterFlowTheme.of(context).secondaryText,
+                      size: 24.0,
+                    ),
+                    fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                    elevation: 2.0,
+                    borderColor: FlutterFlowTheme.of(context).alternate,
+                    borderWidth: 2.0,
+                    borderRadius: 8.0,
+                    margin:
+                    EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+                    hidesUnderline: true,
+                    isOverButton: true,
+                    isSearchable: true,
+                    isMultiSelect: false,
+                  ),
                 ),
               ),
             ],

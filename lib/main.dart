@@ -104,7 +104,7 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'Date': DateWidget(),
       'Home': HomeWidget(),
-      'Location': LocationWidget(),
+      'Setting': SettingWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -149,14 +149,14 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.location_history_rounded,
+              Icons.settings_sharp,
               size: 24.0,
             ),
             activeIcon: Icon(
-              Icons.location_history_rounded,
+              Icons.settings_sharp,
               size: 32.0,
             ),
-            label: 'Location',
+            label: 'Setting',
             tooltip: '',
           )
         ],
