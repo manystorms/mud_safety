@@ -23,6 +23,8 @@ initNotification() async {
 }
 
 showNotificationTimeSetting(String Title, String Content, int AlarmTime) async {
+  if(AlarmTime < 0) return;
+
   tz.initializeTimeZones();
 
   var androidDetails = const AndroidNotificationDetails(

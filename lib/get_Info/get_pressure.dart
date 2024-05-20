@@ -2,7 +2,7 @@ import 'get_data.dart';
 import 'dart:math';
 import 'package:flutter_barometer/flutter_barometer.dart';
 
-void PressureReceive() {
+void PressureReceive(){
 
   flutterBarometerEvents.listen((FlutterBarometerEvent event) {
     if(Data.Pressure != event.pressure && Data.Weather_Error == 0) {

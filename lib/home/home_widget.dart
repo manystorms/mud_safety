@@ -394,8 +394,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                               animation: true,
                                               animateFromLastPercent: true,
                                               progressColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
+                                                (_TimerBar > 0.25) ? FlutterFlowTheme.of(context).primary:Color(0xFFEE2533),
                                               backgroundColor:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryBackground,
