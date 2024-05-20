@@ -95,13 +95,6 @@ class TideReceive {
     res.TideVal.clear();
     res.TideTime.clear();
 
-    for(int i = 1; i <= 5; i++) {
-      res.TideState.add('a');
-      res.TideVal.add('b');
-      res.TideTime.add('c');
-    }
-    if(1 == 1) return res;
-
     final request = Uri.parse(getTideForecastURL('DT_0001', Date));
     final response = await http.get(request);
 
@@ -136,13 +129,11 @@ class TideReceive {
 
         if(extractedData[i]['hl_code'] == '고조') {
           res.TideState.add('최대 조위');
-
         }else{
           res.TideState.add('최소 조위');
         }
       }
     }
-
     return res;
   }
 }

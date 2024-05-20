@@ -38,11 +38,6 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
     _TideData.TideState = ['데이터를 받아오는 중'];
     _TideData.TideTime = ['--:--am'];
     _TideData.TideVal = ['xx(m)'];
-    for(int i = 1; i <= 5; i++) {
-      _TideData.TideState.add('a');
-      _TideData.TideVal.add('b');
-      _TideData.TideTime.add('c');
-    }
   }
 
   @override
@@ -135,10 +130,6 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                     ),
                   ],
                 ),
-              ),
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [],
               ),
             ],
           ),
@@ -284,8 +275,8 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                         shrinkWrap: true,
                                         scrollDirection: Axis.vertical,
                                         children: [
-                                          TideDataCard(),
-                                          TideDataCard(),
+                                          for(int i = 0; i < _TideData.TideState.length; i++)
+                                            TideDataCard(TideData: _TideData, index: i),
                                         ],
                                       ),
                                     ),
@@ -395,196 +386,8 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                         shrinkWrap: true,
                                         scrollDirection: Axis.vertical,
                                         children: [
-                                          TideDataCard(),
-                                          TideDataCard(),
-                                          Padding(
-                                            padding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                16, 0, 16, 12),
-                                            child: Container(
-                                              width: 100,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    blurRadius: 3,
-                                                    color: Color(0x33000000),
-                                                    offset: Offset(
-                                                      0,
-                                                      1,
-                                                    ),
-                                                  )
-                                                ],
-                                                borderRadius:
-                                                BorderRadius.circular(8),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsets.all(8),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                  MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                                  children: [
-                                                    Column(
-                                                      mainAxisSize:
-                                                      MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                      crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .start,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(4,
-                                                              0, 0, 0),
-                                                          child: Text(
-                                                            _TideData.TideState[0],
-                                                            style: FlutterFlowTheme
-                                                                .of(context)
-                                                                .headlineSmall
-                                                                .override(
-                                                              fontFamily:
-                                                              'Outfit',
-                                                              letterSpacing:
-                                                              0,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(0,
-                                                              4, 0, 0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                            MainAxisSize
-                                                                .max,
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                    0,
-                                                                    0,
-                                                                    8,
-                                                                    0),
-                                                                child: Card(
-                                                                  clipBehavior:
-                                                                  Clip.antiAliasWithSaveLayer,
-                                                                  color: FlutterFlowTheme.of(
-                                                                      context)
-                                                                      .accent3,
-                                                                  elevation: 0,
-                                                                  shape:
-                                                                  RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(8),
-                                                                  ),
-                                                                  child:
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                        8,
-                                                                        4,
-                                                                        8,
-                                                                        4),
-                                                                    child: Text(
-                                                                      _TideData.TideTime[0],
-                                                                      style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                        fontFamily:
-                                                                        'Plus Jakarta Sans',
-                                                                        color:
-                                                                        FlutterFlowTheme.of(context).tertiary,
-                                                                        fontSize:
-                                                                        17,
-                                                                        letterSpacing:
-                                                                        0,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                _TideData.TideVal[0],
-                                                                style: FlutterFlowTheme.of(
-                                                                    context)
-                                                                    .bodySmall
-                                                                    .override(
-                                                                  fontFamily:
-                                                                  'Plus Jakarta Sans',
-                                                                  fontSize:
-                                                                  15,
-                                                                  letterSpacing:
-                                                                  0,
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Container(
-                                                      width: 50,
-                                                      height: 50,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                            .of(context)
-                                                            .primaryBackground,
-                                                        borderRadius:
-                                                        BorderRadius
-                                                            .circular(8),
-                                                        shape:
-                                                        BoxShape.rectangle,
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                              .of(context)
-                                                              .alternate,
-                                                          width: 1,
-                                                        ),
-                                                      ),
-                                                      alignment:
-                                                      AlignmentDirectional(
-                                                          0, 0),
-                                                      child: Icon(
-                                                        Icons
-                                                            .add_photo_alternate_outlined,
-                                                        color:
-                                                        FlutterFlowTheme.of(
-                                                            context)
-                                                            .primaryText,
-                                                        size: 24,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 12, 0, 24),
-                                      child: ListView(
-                                        padding: EdgeInsets.zero,
-                                        primary: false,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        children: [
-                                          TideDataCard(),
-                                          TideDataCard(),
+                                          for(int i = 0; i < _TideData.TideState.length; i++)
+                                            TideDataCard(TideData: _TideData, index: i),
                                         ],
                                       ),
                                     ),

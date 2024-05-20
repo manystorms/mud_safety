@@ -1,17 +1,12 @@
-import '/flutter_flow/flutter_flow_button_tabbar.dart';
-import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:mud_safety/get_Info/get_tide.dart';
-import 'package:mud_safety/get_Info/send_Alarm.dart';
-import 'package:share_plus/share_plus.dart';
+import 'package:flutter/material.dart';
 
 class TideDataCard extends StatelessWidget {
+  MaximumMinimumTideData TideData = MaximumMinimumTideData();
+  int index = 0;
 
+  TideDataCard({required this.TideData, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +58,7 @@ class TideDataCard extends StatelessWidget {
                         .fromSTEB(4,
                         0, 0, 0),
                     child: Text(
-                      '최대 조위',
+                      TideData.TideState[index],
                       style: FlutterFlowTheme
                           .of(context)
                           .headlineSmall
@@ -96,9 +91,7 @@ class TideDataCard extends StatelessWidget {
                           child: Card(
                             clipBehavior:
                             Clip.antiAliasWithSaveLayer,
-                            color: FlutterFlowTheme.of(
-                                context)
-                                .accent3,
+                            color: TideData.TideState[index] == '최대 조위' ? FlutterFlowTheme.of(context).accent3:FlutterFlowTheme.of(context).accent1,
                             elevation: 0,
                             shape:
                             RoundedRectangleBorder(
@@ -115,7 +108,7 @@ class TideDataCard extends StatelessWidget {
                                   8,
                                   4),
                               child: Text(
-                                '2:20am',
+                                TideData.TideTime[index],
                                 style: FlutterFlowTheme.of(
                                     context)
                                     .bodyMedium
@@ -123,7 +116,7 @@ class TideDataCard extends StatelessWidget {
                                   fontFamily:
                                   'Plus Jakarta Sans',
                                   color:
-                                  FlutterFlowTheme.of(context).tertiary,
+                                  TideData.TideState[index] == '최대 조위' ? FlutterFlowTheme.of(context).tertiary : FlutterFlowTheme.of(context).primary,
                                   fontSize:
                                   17,
                                   letterSpacing:
@@ -134,7 +127,7 @@ class TideDataCard extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '10(m)',
+                          TideData.TideVal[index],
                           style: FlutterFlowTheme.of(
                               context)
                               .bodySmall
@@ -175,7 +168,7 @@ class TideDataCard extends StatelessWidget {
                 AlignmentDirectional(
                     0, 0),
                 child: Icon(
-                  Icons.arrow_upward,
+                  TideData.TideState[index] == '최대 조위' ? Icons.arrow_upward : Icons.arrow_downward,
                   color:
                   FlutterFlowTheme.of(
                       context)
