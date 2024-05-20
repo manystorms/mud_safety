@@ -41,6 +41,12 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   }
 
   void updateTimer() {
+    if(Data.obs_Graph_name != '시간별 조위') {
+      _TimerWidget = '--:--:--';
+      _TimerBar = 0;
+      return;
+    }
+
     int nowTime = getUnixTime(); //UnixTime
     int time = Data.AlertTime-nowTime;
 

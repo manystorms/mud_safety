@@ -37,7 +37,7 @@ class TideReceive {
     final response = await http.get(request);
 
     if(response.body.contains('No search data')) {
-      res.obsState = '갯벌에 있는지 확인해 주십시오';
+      res.obsState = '현재 위치의 데이터를 불러올 수 없습니다';
     }else if (response.statusCode == 200) {
       final document = xml.XmlDocument.parse(response.body);
       final dataList = document.findAllElements('data');

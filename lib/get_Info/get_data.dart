@@ -2,6 +2,7 @@ import 'get_gps.dart';
 import 'get_tide.dart';
 import 'get_weather.dart';
 import 'get_pressure.dart';
+import 'Timer.dart';
 import 'dart:async';
 import 'package:intl/intl.dart';
 
