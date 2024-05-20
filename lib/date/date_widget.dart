@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:mud_safety/get_Info/get_tide.dart';
 import 'package:mud_safety/get_Info/send_Alarm.dart';
 import 'package:mud_safety/date/date_widget_Tide_card.dart';
+import 'package:mud_safety/date/date_observatory_list.dart';
 import 'package:share_plus/share_plus.dart';
 
 import 'date_model.dart';
@@ -25,13 +26,18 @@ class DateWidget extends StatefulWidget {
 
 class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
   late DateModel _model;
+  Observatory_list observatory_list = Observatory_list();
+  DateTimeRange _LastedSelectedDate = DateTimeRange(start: DateTime.now(), end: DateTime.now());
+  String _ObsCode = 'DT_0001';
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   MaximumMinimumTideData _TideData = MaximumMinimumTideData();
 
   Future<void> updateTide(DateTimeRange SelectedDate) async {
+    _LastedSelectedDate = SelectedDate;
+
     TideReceive getTideData = TideReceive();
-    _TideData = await getTideData.getMaximumMinimumTide(SelectedDate);
+    _TideData = await getTideData.getMaximumMinimumTide(SelectedDate, _ObsCode);
 
     setState(() {});
   }
@@ -101,9 +107,14 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                   child: FlutterFlowDropDown<String>(
                     controller: _model.dropDownValueController ??=
                         FormFieldController<String>(null),
-                    options: ['Option 1'],
-                    onChanged: (val) =>
-                        setState(() => _model.dropDownValue = val),
+                    options: observatory_list.name,
+                    onChanged: (val) {
+                      _ObsCode = observatory_list.getObsCode(val);
+                      setState(() {
+                        _model.dropDownValue = val;
+                        updateTide(_LastedSelectedDate);
+                      });
+                    },
                     width: 124.0,
                     height: 56.0,
                     searchHintTextStyle:
@@ -122,7 +133,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                       letterSpacing: 0.0,
                     ),
                     hintText: '검색 위치',
-                    searchHintText: 'Search for an item...',
+                    searchHintText: '검색 위치',
                     icon: Icon(
                       Icons.keyboard_arrow_down_rounded,
                       color: FlutterFlowTheme.of(context).secondaryText,

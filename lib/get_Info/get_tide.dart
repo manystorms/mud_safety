@@ -79,7 +79,7 @@ class TideReceive {
     return res;
   }
 
-  Future<MaximumMinimumTideData> getMaximumMinimumTide(DateTimeRange SelectedDate) async {
+  Future<MaximumMinimumTideData> getMaximumMinimumTide(DateTimeRange SelectedDate, String ObsCode) async {
     DateTime startDate = SelectedDate.start;
     String Date = "${startDate.year.toString().padLeft(4, '0')}"
         "${startDate.month.toString().padLeft(2, '0')}${startDate.day.toString().padLeft(2, '0')}";
@@ -95,13 +95,10 @@ class TideReceive {
     res.TideVal.clear();
     res.TideTime.clear();
 
-    final request = Uri.parse(getTideForecastURL('DT_0001', Date));
+    final request = Uri.parse(getTideForecastURL(ObsCode, Date));
     final response = await http.get(request);
 
     if (response.statusCode == 200) {
-      final request = Uri.parse(getTideForecastURL('DT_0001', Date));
-      final response = await http.get(request);
-
       final jsonData = jsonDecode(response.body);
 
       final data = jsonData['result']['data'] as List<dynamic>;
