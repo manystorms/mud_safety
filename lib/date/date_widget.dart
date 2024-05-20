@@ -322,20 +322,12 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                           .secondaryText,
                                       weekFormat: true,
                                       weekStartsMonday: true,
-                                      onChange: (DateTimeRange?
-                                      newSelectedDate) async {
-                                        if (_model.calendarSelectedDay2 ==
-                                            newSelectedDate) {
-                                          return;
-                                        }
-                                        _model.calendarSelectedDay2 =
-                                            newSelectedDate;
-                                        await Share.share(
-                                          '',
-                                          sharePositionOrigin:
-                                          getWidgetBoundingBox(context),
-                                        );
-                                        setState(() {});
+                                      onChange: (DateTimeRange? newSelectedDate) {
+                                        setState(() {
+                                          _model.calendarSelectedDay1 = newSelectedDate;
+                                          resetTideData();
+                                        });
+                                        if(newSelectedDate != null) updateTide(newSelectedDate);
                                       },
                                       titleStyle: FlutterFlowTheme.of(context)
                                           .titleLarge
