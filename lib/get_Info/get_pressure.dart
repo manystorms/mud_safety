@@ -1,4 +1,5 @@
 import 'get_data.dart';
+import 'dart:math';
 import 'package:flutter_barometer/flutter_barometer.dart';
 
 void PressureReceive() {
@@ -9,8 +10,11 @@ void PressureReceive() {
     if(Data.Pressure != event.pressure) {
       Data.Pressure = event.pressure;
 
-      double Density = Data.Pressure/Rs*Data.Weather_Temperature;
-      Data.Height = Data.Pressure;
+      double Density = (Data.Weather_Pressure*0.750063)/Rs*Data.Weather_Temperature;
+
+      double Height = (Data.Pressure*100-Data.Weather_Pressure*100)/(Density*g);
+      Data.Height = Height;
+      Data.Tide_Gap = Data.Pressure;
     }
   });
 }

@@ -33,7 +33,6 @@ class TideReceive {
       res.obsState = '위치 권한이 허용되지 않았습니다';
       return res;
     }
-
     final request = Uri.parse(getTideURL(Data.latitude, Data.longitude, getToday()));
     final response = await http.get(request);
 
