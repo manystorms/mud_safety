@@ -5,7 +5,7 @@ import 'package:flutter_barometer/flutter_barometer.dart';
 void PressureReceive() {
 
   flutterBarometerEvents.listen((FlutterBarometerEvent event) {
-    if(Data.Pressure != event.pressure) {
+    if(Data.Pressure != event.pressure && Data.Weather_Error == 0) {
       Data.Pressure = event.pressure;
       double Rs = 287.058; //비기체상수
       double g = 9.8; //중력가속도
