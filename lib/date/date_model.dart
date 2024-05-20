@@ -7,6 +7,7 @@ import 'date_widget.dart' show DateWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 class DateModel extends FlutterFlowModel<DateWidget> {
   ///  State fields for stateful widgets in this page.

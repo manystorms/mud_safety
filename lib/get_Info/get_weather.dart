@@ -19,7 +19,6 @@ class WeatherReveive {
 
     final request = Uri.parse(getWeatherURL(Data.latitude, Data.longitude));
     final response = await http.get(request);
-    print(response.body);
 
     if(response.statusCode == 200) {
       final document = xml.XmlDocument.parse(response.body);
@@ -32,8 +31,6 @@ class WeatherReveive {
       if(pressure != null) Data.Weather_Pressure = double.parse(pressure);
 
       Data.Weather_Error = 0;
-      print(Data.Weather_Temperature);
-      print(Data.Weather_Pressure);
     }else{
       Data.Weather_Error = 1;
     }

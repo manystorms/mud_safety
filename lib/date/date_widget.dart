@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:mud_safety/get_Info/get_tide.dart';
 import 'package:mud_safety/get_Info/send_Alarm.dart';
+import 'package:share_plus/share_plus.dart';
 
 import 'date_model.dart';
 export 'date_model.dart';
@@ -90,6 +91,53 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                     ),
                   ),
                 ],
+              ),
+              Container(
+                width: 262.0,
+                height: 45.0,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Container(
+                        width: 243.0,
+                        height: 80.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(24.0),
+                        ),
+                        child: Stack(
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(0.85, 0.21),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('Date_ListView');
+                                },
+                                child: Icon(
+                                  Icons.location_on_outlined,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 24.0,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [],
               ),
             ],
           ),
