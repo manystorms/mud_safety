@@ -3,17 +3,20 @@ import 'dart:math';
 import 'package:flutter_barometer/flutter_barometer.dart';
 
 void PressureReceive() {
-  const Rs = 287.058; //비기체상수
-  const g = 9.8; //중력가속도
 
   flutterBarometerEvents.listen((FlutterBarometerEvent event) {
     if(Data.Pressure != event.pressure) {
       Data.Pressure = event.pressure;
+      double Rs = 287.058; //비기체상수
+      double g = 9.8; //중력가속도
 
-      double Density = (Data.Weather_Pressure*0.750063)/Rs*Data.Weather_Temperature;
-
-      double Height = (Data.Pressure*100-Data.Weather_Pressure*100)/(Density*g);
+      double Height = (Rs*Data.Weather_Temperature/g)*log(Data.Weather_Pressure/Data.Pressure);
       Data.Height = Height;
+
+      Data.Tide_Gap = Data.Height-Data.obs_Graph_y[0]/100;
+
+
+
       Data.Tide_Gap = Data.Pressure;
     }
   });

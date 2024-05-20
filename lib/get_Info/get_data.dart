@@ -82,6 +82,7 @@ class ReceiveData {
 
   double Weather_Pressure = 0;
   double Weather_Temperature = 0;
+  double Weather_Humidity = 65;
   int Weather_Error = 0;
 
   double Pressure = 0;
