@@ -28,7 +28,7 @@ class WeatherReveive {
 
       // pressure의 value 추출
       String? pressure = document.findAllElements('pressure').first.getAttribute('value');
-      //if(pressure != null) Data.Weather_Pressure = double.parse(pressure);
+      if(pressure != null) Data.Weather_Pressure = double.parse(pressure);
 
       String? humidity = document.findAllElements('humidity').first.getAttribute('value');
       if(humidity != null) Data.Weather_Humidity = double.parse(humidity);

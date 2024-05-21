@@ -23,7 +23,7 @@ void updateSettingTime() async {
     for(int i in AlarmTime) {
       showNotificationTimeSetting(
           '조석 경보',
-          '$i분 후에 갯벌에서 나가야 합니다',
+          (i != 0)? '$i분 후에 갯벌에서 나가야 합니다':'지금 즉시 갯벌에서 나가야 합니다',
           RemainingTime-i*60,
       );
 

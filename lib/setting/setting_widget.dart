@@ -16,7 +16,7 @@ class SettingWidget extends StatefulWidget {
   State<SettingWidget> createState() => _SettingWidgetState();
 }
 
-class _SettingWidgetState extends State<SettingWidget> {
+/*class _SettingWidgetState extends State<SettingWidget> {
   final TextEditingController _controller1 = TextEditingController();
   final TextEditingController _controller2 = TextEditingController();
   String _result1 = "";
@@ -81,9 +81,9 @@ class _SettingWidgetState extends State<SettingWidget> {
       ),
     );
   }
-}
+}*/
 
-/*class _SettingWidgetState extends State<SettingWidget> {
+class _SettingWidgetState extends State<SettingWidget> {
   late SettingModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -290,4 +290,4 @@ class _SettingWidgetState extends State<SettingWidget> {
       ),
     );
   }
-}*/
+}
