@@ -8,6 +8,7 @@ import 'setting_model.dart';
 export 'setting_model.dart';
 import 'package:mud_safety/get_Info/Timer.dart';
 import 'package:mud_safety/get_Info/get_data.dart';
+import 'package:mud_safety/warning_alarm/warning_alarm_widget.dart';
 
 class SettingWidget extends StatefulWidget {
   const SettingWidget({super.key});
@@ -277,6 +278,40 @@ class _SettingWidgetState extends State<SettingWidget> {
                  checkColor: FlutterFlowTheme.of(context).info,
                  dense: false,
                  controlAffinity: ListTileControlAffinity.trailing,
+               ),
+             ),
+             FFButtonWidget(
+               onPressed: () async {
+                 await showModalBottomSheet(
+                   isScrollControlled: true,
+                   backgroundColor: Colors.transparent,
+                   enableDrag: false,
+                   context: context,
+                   builder: (context) {
+                     return Padding(
+                       padding: MediaQuery.viewInsetsOf(context),
+                       child: WarningAlarmWidget(),
+                     );
+                   },
+                 ).then((value) => safeSetState(() {}));
+               },
+               text: 'Button',
+               options: FFButtonOptions(
+                 height: 40,
+                 padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                 iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                 color: FlutterFlowTheme.of(context).primary,
+                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                   fontFamily: 'Plus Jakarta Sans',
+                   color: Colors.white,
+                   letterSpacing: 0,
+                 ),
+                 elevation: 3,
+                 borderSide: BorderSide(
+                   color: Colors.transparent,
+                   width: 1,
+                 ),
+                 borderRadius: BorderRadius.circular(8),
                ),
              ),
            ],
