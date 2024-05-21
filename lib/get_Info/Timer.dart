@@ -13,10 +13,10 @@ void updateSettingTime() async {
   }
   if(drownTime == null) drownTime = Data.obs_Graph_x.last;
 
-  RemainingTime = drownTime-getUnixTime()-900;
+  RemainingTime = drownTime-getUnixTime()-60*30;
   Data.AlertTime = drownTime;
 
-  List<int> AlarmTime = [5, 15, 30, 60]; //단위: 분
+  List<int> AlarmTime = [0, 5, 15, 30, 60]; //단위: 분
 
   if(1 == 1) {
     cancelNotification();

@@ -93,7 +93,7 @@ class ReceiveData {
 
   double Pressure = 0;
   double Height = 0;
-
+  double Correction = 0;
   double Tide_Gap = 5;
   int AlertTime = 1716129253; //UnixTime 기준
 }

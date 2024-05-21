@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'setting_model.dart';
 export 'setting_model.dart';
+import 'package:mud_safety/get_Info/Timer.dart';
 import 'package:mud_safety/get_Info/get_data.dart';
 
 class SettingWidget extends StatefulWidget {
@@ -16,44 +17,69 @@ class SettingWidget extends StatefulWidget {
 }
 
 class _SettingWidgetState extends State<SettingWidget> {
-  final TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller1 = TextEditingController();
+  final TextEditingController _controller2 = TextEditingController();
+  String _result1 = "";
+  String _result2 = "";
 
-  void _printText() {
-    Data.Weather_Pressure = double.parse(_controller.text);
-    print(Data.Weather_Pressure);
+  void _printTexts() {
+    Data.Weather_Pressure = double.parse(_controller1.text);
+    Data.Correction = double.parse(_controller2.text);
+    updateSettingTime();
+    setState(() {
+      _result1 = _controller1.text;
+      _result2 = _controller2.text;
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller1.dispose();
+    _controller2.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('TextField Example'),
+        title: Text('Multiple TextField Example'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
-              controller: _controller,
+              controller: _controller1,
               decoration: InputDecoration(
-                labelText: 'Enter text',
+                labelText: 'Enter first text',
+              ),
+            ),
+            SizedBox(height: 20),
+            TextField(
+              controller: _controller2,
+              decoration: InputDecoration(
+                labelText: 'Enter second text',
               ),
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _printText,
-              child: Text('Print Text'),
+              onPressed: _printTexts,
+              child: Text('Print Texts'),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'First Text: $_result1',
+              style: TextStyle(fontSize: 20),
+            ),
+            Text(
+              'Second Text: $_result2',
+              style: TextStyle(fontSize: 20),
             ),
           ],
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }
 
