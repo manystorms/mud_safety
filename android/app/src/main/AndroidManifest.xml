@@ -7,7 +7,7 @@
     <application
         android:label="골든 타임 세이버"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/launcher_icon"
         android:minSdkVersion="30">
         <activity
             android:name=".MainActivity"
