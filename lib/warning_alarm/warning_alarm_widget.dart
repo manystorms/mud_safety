@@ -8,6 +8,21 @@ import 'package:provider/provider.dart';
 import 'warning_alarm_model.dart';
 export 'warning_alarm_model.dart';
 
+Future<void> showWarningAlarm(BuildContext context) async {
+  await showModalBottomSheet(
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    enableDrag: false,
+    context: context,
+    builder: (context) {
+      return Padding(
+        padding: MediaQuery.viewInsetsOf(context),
+        child: WarningAlarmWidget(),
+      );
+    },
+  );
+}
+
 class WarningAlarmWidget extends StatefulWidget {
   const WarningAlarmWidget({super.key});
 
@@ -17,12 +32,25 @@ class WarningAlarmWidget extends StatefulWidget {
 
 class _WarningAlarmWidgetState extends State<WarningAlarmWidget> {
   late WarningAlarmModel _model;
+  int _ImageNum = 3;
 
   @override
   void setState(VoidCallback callback) {
-    print('a');
     super.setState(callback);
     _model.onUpdate();
+  }
+
+  void ShowAnimation() async{
+    while(true) {
+      _ImageNum = 3; setState(() {});
+      Future.delayed(Duration(seconds: 1));
+
+      _ImageNum = 1; setState(() {});
+      Future.delayed(Duration(seconds: 1));
+
+      _ImageNum = 2; setState(() {});
+      Future.delayed(Duration(seconds: 1));
+    }
   }
 
   @override
@@ -31,6 +59,8 @@ class _WarningAlarmWidgetState extends State<WarningAlarmWidget> {
     _model = createModel(context, () => WarningAlarmModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+
+    ShowAnimation();
   }
 
   @override
@@ -105,11 +135,9 @@ class _WarningAlarmWidgetState extends State<WarningAlarmWidget> {
                 alignment: AlignmentDirectional(0, 0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    'https://picsum.photos/seed/783/600',
-                    width: 300,
-                    height: 200,
-                    fit: BoxFit.cover,
+                  child: Image.asset(
+                      'assets/images/Image${_ImageNum.toString()}.png',
+                      height: 150,
                   ),
                 ),
               ),

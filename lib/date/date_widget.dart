@@ -43,11 +43,19 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
     _TideData.TideVal = ['xx(m)'];
   }
 
+  Future<void> test() async{
+    await Future.delayed(Duration(seconds: 3));
+    print('a');
+
+    showWarningAlarm(context);
+  }
+
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => DateModel());
     resetTideData();
+    test();
 
     _model.tabBarController = TabController(
       vsync: this,
