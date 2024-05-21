@@ -66,8 +66,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
     Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
         updateTimer();
-        _HeightBar = settingBar(Data.Height, -7, 7);
-        _TideBar = settingBar(Data.Tide_Gap, -7, 7);
+        _HeightBar = settingBar(Data.Height, -20, 20);
+        _TideBar = settingBar(Data.Tide_Gap, -20, 20);
       });
     });
 

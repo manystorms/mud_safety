@@ -52,6 +52,9 @@ void UpdateData() {
   Timer.periodic(Duration(seconds: 60), (Timer timer) {
     WeatherReceiveClass.updateWeather();
   });
+  Timer.periodic(Duration(seconds: 60), (Timer timer) {
+    updateSettingTime();
+  });
 }
 
 Future <void> updateTide() async {
@@ -68,6 +71,8 @@ Future <void> updateTide() async {
   Data.obs_Graph_x = ObsGraphDataClass.obs_Graph_x;
   Data.obs_Graph_y = ObsGraphDataClass.obs_Graph_y;
   Data.obs_Graph_name = ObsGraphDataClass.obsGraphName;
+
+  updateSettingTime();
 }
 
 class ReceiveData {

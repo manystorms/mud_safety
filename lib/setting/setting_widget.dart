@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'setting_model.dart';
 export 'setting_model.dart';
+import 'package:mud_safety/get_Info/get_data.dart';
 
 class SettingWidget extends StatefulWidget {
   const SettingWidget({super.key});
@@ -15,6 +16,48 @@ class SettingWidget extends StatefulWidget {
 }
 
 class _SettingWidgetState extends State<SettingWidget> {
+  final TextEditingController _controller = TextEditingController();
+
+  void _printText() {
+    Data.Weather_Pressure = double.parse(_controller.text);
+    print(Data.Weather_Pressure);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('TextField Example'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: _controller,
+              decoration: InputDecoration(
+                labelText: 'Enter text',
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _printText,
+              child: Text('Print Text'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+}
+
+/*class _SettingWidgetState extends State<SettingWidget> {
   late SettingModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -217,37 +260,8 @@ class _SettingWidgetState extends State<SettingWidget> {
               controlAffinity: ListTileControlAffinity.trailing,
             ),
           ),
-          SwitchListTile.adaptive(
-            value: _model.switchListTileValue2 ??= true,
-            onChanged: (newValue) async {
-              setState(() => _model.switchListTileValue2 = newValue!);
-            },
-            title: Text(
-              'Location Services',
-              style: FlutterFlowTheme.of(context).bodyLarge.override(
-                fontFamily: 'Plus Jakarta Sans',
-                letterSpacing: 0.0,
-                lineHeight: 2.0,
-              ),
-            ),
-            subtitle: Text(
-              'Allow us to track your location, this helps keep track of spending and keeps you safe.',
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                fontFamily: 'Plus Jakarta Sans',
-                color: Color(0xFF8B97A2),
-                letterSpacing: 0.0,
-              ),
-            ),
-            tileColor: FlutterFlowTheme.of(context).secondaryBackground,
-            activeColor: FlutterFlowTheme.of(context).primary,
-            activeTrackColor: FlutterFlowTheme.of(context).accent1,
-            dense: false,
-            controlAffinity: ListTileControlAffinity.trailing,
-            contentPadding:
-            EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
-          ),
         ],
       ),
     );
   }
-}
+}*/

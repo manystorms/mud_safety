@@ -22,7 +22,11 @@ void PressureReceive(){
       String StrHeight = Height.toStringAsFixed(4);
       Data.Height = double.parse(StrHeight);
 
-      if(Data.obs_Graph_x.isNotEmpty) Data.Tide_Gap = Data.Height-Data.obs_Graph_y[0]/100;
+      if(Data.obs_Graph_x.isNotEmpty) {
+        double Tide_Gap = Data.Height-Data.obs_Graph_y[0]/100;
+        String StrTide_Gap = Tide_Gap.toStringAsFixed(4);
+        Data.Tide_Gap = double.parse(StrTide_Gap);
+      }
     }
   });
 }

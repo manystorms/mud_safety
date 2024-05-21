@@ -14,7 +14,7 @@ void updateSettingTime() async {
   if(drownTime == null) drownTime = Data.obs_Graph_x.last;
 
   RemainingTime = drownTime-getUnixTime()-900;
-  Data.AlertTime = drownTime-900;
+  Data.AlertTime = drownTime;
 
   List<int> AlarmTime = [5, 15, 30, 60]; //단위: 분
 
@@ -25,6 +25,12 @@ void updateSettingTime() async {
           '조석 경보',
           '$i분 후에 갯벌에서 나가야 합니다',
           RemainingTime-i*60,
+      );
+
+      showNotificationTimeSetting(
+        '조석 경보',
+        '$i분 후에 갯벌에서 나가야 합니다',
+        3,
       );
     }
   }
