@@ -94,6 +94,11 @@ class TideReceive {
     res.TideState.clear();
     res.TideVal.clear();
     res.TideTime.clear();
+    await Future.delayed(Duration(seconds: 3));
+    res.TideState = ['최대 조위', '최소 조위', '최대 조위', '최소 조위'];
+    res.TideVal = ['7.08(m)', '1.02(m)', '6.45(m)', '2.12(m)'];
+    res.TideTime = ['1:10am', '7:54am', '3:22pm', '10:34pm'];
+    return res;
 
     final request = Uri.parse(getTideForecastURL(ObsCode, Date));
     final response = await http.get(request);

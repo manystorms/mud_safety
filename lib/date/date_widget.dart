@@ -297,7 +297,10 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                         scrollDirection: Axis.vertical,
                                         children: [
                                           for(int i = 0; i < _TideData.TideState.length; i++)
-                                            TideDataCard(TideData: _TideData, index: i),
+                                            if(_TideData.TideState[i] != '데이터를 받아오는 중')
+                                              TideDataCard(TideData: _TideData, index: i),
+                                          if(_TideData.TideState[0] == '데이터를 받아오는 중')
+                                            GettingDataCard(),
                                         ],
                                       ),
                                     ),
@@ -400,7 +403,10 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
                                         scrollDirection: Axis.vertical,
                                         children: [
                                           for(int i = 0; i < _TideData.TideState.length; i++)
-                                            TideDataCard(TideData: _TideData, index: i),
+                                            if(_TideData.TideState[i] != '데이터를 받아오는 중')
+                                              TideDataCard(TideData: _TideData, index: i),
+                                          if(_TideData.TideState[0] == '데이터를 받아오는 중')
+                                            GettingDataCard(),
                                         ],
                                       ),
                                     ),
