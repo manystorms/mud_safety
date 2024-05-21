@@ -77,19 +77,19 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
       'containerOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
+          VisibilityEffect(duration: 800.ms),
           FadeEffect(
             curve: Curves.easeInOut,
-            delay: 0.0.ms,
+            delay: 800.0.ms,
             duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
           ),
           MoveEffect(
             curve: Curves.easeInOut,
-            delay: 0.0.ms,
+            delay: 800.0.ms,
             duration: 600.0.ms,
-            begin: Offset(100.0, 0.0),
+            begin: Offset(0.0, 50.0),
             end: Offset(0.0, 0.0),
           ),
         ],
@@ -117,19 +117,19 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
       'containerOnPageLoadAnimation3': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
-          VisibilityEffect(duration: 1600.ms),
+          VisibilityEffect(duration: 1.ms),
           FadeEffect(
             curve: Curves.easeInOut,
-            delay: 100.0.ms,
+            delay: 0.0.ms,
             duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
           ),
           MoveEffect(
             curve: Curves.easeInOut,
-            delay: 200.0.ms,
+            delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: Offset(0.0, 70.0),
+            begin: Offset(-50.0, 0.0),
             end: Offset(0.0, 0.0),
           ),
         ],
@@ -177,19 +177,19 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
       'containerOnPageLoadAnimation5': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
-          VisibilityEffect(duration: 1600.ms),
+          VisibilityEffect(duration: 1.ms),
           FadeEffect(
             curve: Curves.easeInOut,
-            delay: 1600.0.ms,
+            delay: 0.0.ms,
             duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
           ),
           MoveEffect(
             curve: Curves.easeInOut,
-            delay: 1600.0.ms,
+            delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: Offset(0.0, 90.0),
+            begin: Offset(-50.0, 0.0),
             end: Offset(0.0, 0.0),
           ),
         ],
@@ -237,19 +237,19 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
       'containerOnPageLoadAnimation7': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
-          VisibilityEffect(duration: 800.ms),
+          VisibilityEffect(duration: 1.ms),
           FadeEffect(
             curve: Curves.easeInOut,
-            delay: 800.0.ms,
+            delay: 0.0.ms,
             duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
           ),
           MoveEffect(
             curve: Curves.easeInOut,
-            delay: 800.0.ms,
+            delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: Offset(0.0, 50.0),
+            begin: Offset(-50.0, 0.0),
             end: Offset(0.0, 0.0),
           ),
         ],
@@ -269,18 +269,12 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
             curve: Curves.easeInOut,
             delay: 1600.0.ms,
             duration: 600.0.ms,
-            begin: Offset(0.0, 30.0),
+            begin: Offset(40.0, 0.0),
             end: Offset(0.0, 0.0),
           ),
         ],
       ),
     });
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
