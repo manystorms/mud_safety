@@ -59,27 +59,12 @@ class _WarningAlarmWidgetState extends State<WarningAlarmWidget> {
     _model.onUpdate();
   }
 
-  void ShowAnimation() async{
-    while(true) {
-      _ImageNum = 3; setState(() {});
-      Future.delayed(Duration(seconds: 1));
-
-      _ImageNum = 1; setState(() {});
-      Future.delayed(Duration(seconds: 1));
-
-      _ImageNum = 2; setState(() {});
-      Future.delayed(Duration(seconds: 1));
-    }
-  }
-
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => WarningAlarmModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
-
-    ShowAnimation();
   }
 
   @override
