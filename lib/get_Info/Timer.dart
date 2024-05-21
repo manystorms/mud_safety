@@ -3,6 +3,7 @@ import 'get_data.dart';
 
 bool AlarmOn = true;
 List<bool> AlarmSetting = [true, true, true, true, true];
+List<int> AlarmTime = [0, 5, 15, 30, 60]; //단위: 분
 
 void updateSettingTime() async {
   int? drownTime = null;
@@ -18,8 +19,6 @@ void updateSettingTime() async {
 
   RemainingTime = drownTime-getUnixTime()-60*30;
   Data.AlertTime = drownTime;
-
-  List<int> AlarmTime = [0, 5, 15, 30, 60]; //단위: 분
 
   if(AlarmOn == true) {
     cancelNotification();

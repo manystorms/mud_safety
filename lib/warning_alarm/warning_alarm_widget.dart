@@ -4,11 +4,25 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:mud_safety/get_Info/Timer.dart';
 
 import 'warning_alarm_model.dart';
 export 'warning_alarm_model.dart';
 
-Future<void> showWarningAlarm(BuildContext context) async {
+void TimeCheck(BuildContext context, int RemainTime) {
+  for(int i = 0; i < AlarmTime.length; i++) {
+    if(RemainTime == AlarmTime[i]*60 && AlarmOn == true && AlarmSetting[i] == true) {
+      String Content = 'a';
+      if(AlarmTime[i] == 0) Content = '지금 즉시 갯벌에서 나가야 해요!';
+      else Content = '${AlarmTime[i]}분 후에 갯벌에서 나가야 해요!';
+
+      showWarningAlarm(context, Content);
+      break;
+    }
+  }
+}
+
+Future<void> showWarningAlarm(BuildContext context, String Content) async {
   await showModalBottomSheet(
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
@@ -17,14 +31,19 @@ Future<void> showWarningAlarm(BuildContext context) async {
     builder: (context) {
       return Padding(
         padding: MediaQuery.viewInsetsOf(context),
-        child: WarningAlarmWidget(),
+        child: WarningAlarmWidget(
+          Content: Content,
+        ),
       );
     },
   );
 }
 
 class WarningAlarmWidget extends StatefulWidget {
-  const WarningAlarmWidget({super.key});
+  //const WarningAlarmWidget({super.key});
+
+  String Content = 'a';
+  WarningAlarmWidget({required this.Content});
 
   @override
   State<WarningAlarmWidget> createState() => _WarningAlarmWidgetState();
@@ -122,7 +141,7 @@ class _WarningAlarmWidgetState extends State<WarningAlarmWidget> {
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 0),
                   child: Text(
-                    'Create Note',
+                    widget.Content,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Plus Jakarta Sans',
                       fontSize: 40,

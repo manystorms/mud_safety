@@ -12,6 +12,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:mud_safety/get_Info/get_data.dart';
+import 'package:mud_safety/warning_alarm/warning_alarm_widget.dart';
 import 'home_model.dart';
 export 'home_model.dart';
 import 'dart:async';
@@ -51,6 +52,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
     int time = Data.AlertTime-nowTime;
 
     _TimerBar = settingBar(time.toDouble(), 0, 3600);
+    TimeCheck(context, time);
 
     final Hour = time~/3600; time -= Hour*3600;
     final Min = time~/60; time -= Min*60;

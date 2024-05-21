@@ -47,7 +47,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
     await Future.delayed(Duration(seconds: 3));
     print('a');
 
-    showWarningAlarm(context);
+    showWarningAlarm(context, 'test');
   }
 
   @override
@@ -55,7 +55,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
     super.initState();
     _model = createModel(context, () => DateModel());
     resetTideData();
-    test();
+    //test();
 
     _model.tabBarController = TabController(
       vsync: this,
