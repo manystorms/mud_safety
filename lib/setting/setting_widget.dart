@@ -112,7 +112,7 @@ class _SettingWidgetState extends State<SettingWidget> {
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         automaticallyImplyLeading: false,
         title: Text(
-          'Settings Page',
+          '설정',
           style: FlutterFlowTheme.of(context).headlineSmall.override(
             fontFamily: 'Outfit',
             letterSpacing: 0.0,
@@ -127,30 +127,17 @@ class _SettingWidgetState extends State<SettingWidget> {
         children: [
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Expanded(
-                  child: Text(
-                    'Choose what notifcations you want to recieve below and we will update the settings.',
-                    style: FlutterFlowTheme.of(context).labelMedium.override(
-                      fontFamily: 'Outfit',
-                      letterSpacing: 0.0,
-                    ),
-                  ),
-                ),
-              ],
-            ),
           ),
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
             child: SwitchListTile.adaptive(
-              value: _model.switchListTileValue1 ??= true,
+              value: _model.switchListTileValue1 ??= AlarmOn,
               onChanged: (newValue) async {
+                if(newValue != null) AlarmOn = newValue;
                 setState(() => _model.switchListTileValue1 = newValue!);
               },
               title: Text(
-                'Push Notifications',
+                '푸쉬 알림',
                 style: FlutterFlowTheme.of(context).bodyLarge.override(
                   fontFamily: 'Plus Jakarta Sans',
                   letterSpacing: 0.0,
@@ -158,7 +145,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                 ),
               ),
               subtitle: Text(
-                'Receive Push notifications from our application on a semi regular basis.',
+                '갯벌에서 나가야 할 시간이 되었을 때 알림을 받는 것을 허용합니까?',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Plus Jakarta Sans',
                   color: Color(0xFF8B97A2),
@@ -174,118 +161,126 @@ class _SettingWidgetState extends State<SettingWidget> {
               EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
             ),
           ),
-          Theme(
-            data: ThemeData(
-              checkboxTheme: CheckboxThemeData(
-                visualDensity: VisualDensity.compact,
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              ),
-              unselectedWidgetColor: FlutterFlowTheme.of(context).secondaryText,
-            ),
-            child: CheckboxListTile(
-              value: _model.checkboxListTileValue1 ??= true,
-              onChanged: (newValue) async {
-                setState(() => _model.checkboxListTileValue1 = newValue!);
-              },
-              title: Text(
-                '5min',
-                style: FlutterFlowTheme.of(context).titleLarge.override(
-                  fontFamily: 'Outfit',
-                  fontSize: 17.0,
-                  letterSpacing: 0.0,
-                ),
-              ),
-              tileColor: FlutterFlowTheme.of(context).secondaryBackground,
-              activeColor: FlutterFlowTheme.of(context).primary,
-              checkColor: FlutterFlowTheme.of(context).info,
-              dense: false,
-              controlAffinity: ListTileControlAffinity.trailing,
-            ),
-          ),
-          Theme(
-            data: ThemeData(
-              checkboxTheme: CheckboxThemeData(
-                visualDensity: VisualDensity.compact,
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              ),
-              unselectedWidgetColor: FlutterFlowTheme.of(context).secondaryText,
-            ),
-            child: CheckboxListTile(
-              value: _model.checkboxListTileValue2 ??= true,
-              onChanged: (newValue) async {
-                setState(() => _model.checkboxListTileValue2 = newValue!);
-              },
-              title: Text(
-                '15min',
-                style: FlutterFlowTheme.of(context).titleLarge.override(
-                  fontFamily: 'Outfit',
-                  fontSize: 17.0,
-                  letterSpacing: 0.0,
-                ),
-              ),
-              tileColor: FlutterFlowTheme.of(context).secondaryBackground,
-              activeColor: FlutterFlowTheme.of(context).primary,
-              checkColor: FlutterFlowTheme.of(context).info,
-              dense: false,
-              controlAffinity: ListTileControlAffinity.trailing,
-            ),
-          ),
-          Theme(
-            data: ThemeData(
-              checkboxTheme: CheckboxThemeData(
-                visualDensity: VisualDensity.compact,
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              ),
-              unselectedWidgetColor: FlutterFlowTheme.of(context).secondaryText,
-            ),
-            child: CheckboxListTile(
-              value: _model.checkboxListTileValue3 ??= true,
-              onChanged: (newValue) async {
-                setState(() => _model.checkboxListTileValue3 = newValue!);
-              },
-              title: Text(
-                '30min',
-                style: FlutterFlowTheme.of(context).titleLarge.override(
-                  fontFamily: 'Outfit',
-                  fontSize: 17.0,
-                  letterSpacing: 0.0,
-                ),
-              ),
-              tileColor: FlutterFlowTheme.of(context).secondaryBackground,
-              activeColor: FlutterFlowTheme.of(context).primary,
-              checkColor: FlutterFlowTheme.of(context).info,
-              dense: false,
-              controlAffinity: ListTileControlAffinity.trailing,
-            ),
-          ),
-          Theme(
-            data: ThemeData(
-              checkboxTheme: CheckboxThemeData(
-                visualDensity: VisualDensity.compact,
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              ),
-              unselectedWidgetColor: FlutterFlowTheme.of(context).secondaryText,
-            ),
-            child: CheckboxListTile(
-              value: _model.checkboxListTileValue4 ??= true,
-              onChanged: (newValue) async {
-                setState(() => _model.checkboxListTileValue4 = newValue!);
-              },
-              title: Text(
-                '60min',
-                style: FlutterFlowTheme.of(context).titleLarge.override(
-                  fontFamily: 'Outfit',
-                  fontSize: 17.0,
-                  letterSpacing: 0.0,
-                ),
-              ),
-              tileColor: FlutterFlowTheme.of(context).secondaryBackground,
-              activeColor: FlutterFlowTheme.of(context).primary,
-              checkColor: FlutterFlowTheme.of(context).info,
-              dense: false,
-              controlAffinity: ListTileControlAffinity.trailing,
-            ),
-          ),
+         if(AlarmOn) Column(
+           children: [
+             Theme(
+               data: ThemeData(
+                 checkboxTheme: CheckboxThemeData(
+                   visualDensity: VisualDensity.compact,
+                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                 ),
+                 unselectedWidgetColor: FlutterFlowTheme.of(context).secondaryText,
+               ),
+               child: CheckboxListTile(
+                 value: _model.checkboxListTileValue1 ??= AlarmSetting[1],
+                 onChanged: (newValue) async {
+                   if(newValue != null) AlarmSetting[1] = newValue;
+                   setState(() => _model.checkboxListTileValue1 = newValue!);
+                 },
+                 title: Text(
+                   '5분 전 알람',
+                   style: FlutterFlowTheme.of(context).titleLarge.override(
+                     fontFamily: 'Outfit',
+                     fontSize: 17.0,
+                     letterSpacing: 0.0,
+                   ),
+                 ),
+                 tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+                 activeColor: FlutterFlowTheme.of(context).primary,
+                 checkColor: FlutterFlowTheme.of(context).info,
+                 dense: false,
+                 controlAffinity: ListTileControlAffinity.trailing,
+               ),
+             ),
+             Theme(
+               data: ThemeData(
+                 checkboxTheme: CheckboxThemeData(
+                   visualDensity: VisualDensity.compact,
+                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                 ),
+                 unselectedWidgetColor: FlutterFlowTheme.of(context).secondaryText,
+               ),
+               child: CheckboxListTile(
+                 value: _model.checkboxListTileValue2 ??= AlarmSetting[2],
+                 onChanged: (newValue) async {
+                   if(newValue != null) AlarmSetting[2] = newValue;
+                   setState(() => _model.checkboxListTileValue2 = newValue!);
+                 },
+                 title: Text(
+                   '15분 전 알람',
+                   style: FlutterFlowTheme.of(context).titleLarge.override(
+                     fontFamily: 'Outfit',
+                     fontSize: 17.0,
+                     letterSpacing: 0.0,
+                   ),
+                 ),
+                 tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+                 activeColor: FlutterFlowTheme.of(context).primary,
+                 checkColor: FlutterFlowTheme.of(context).info,
+                 dense: false,
+                 controlAffinity: ListTileControlAffinity.trailing,
+               ),
+             ),
+             Theme(
+               data: ThemeData(
+                 checkboxTheme: CheckboxThemeData(
+                   visualDensity: VisualDensity.compact,
+                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                 ),
+                 unselectedWidgetColor: FlutterFlowTheme.of(context).secondaryText,
+               ),
+               child: CheckboxListTile(
+                 value: _model.checkboxListTileValue3 ??= AlarmSetting[3],
+                 onChanged: (newValue) async {
+                   if(newValue != null) AlarmSetting[3] = newValue;
+                   setState(() => _model.checkboxListTileValue3 = newValue!);
+                 },
+                 title: Text(
+                   '30분 전 알람',
+                   style: FlutterFlowTheme.of(context).titleLarge.override(
+                     fontFamily: 'Outfit',
+                     fontSize: 17.0,
+                     letterSpacing: 0.0,
+                   ),
+                 ),
+                 tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+                 activeColor: FlutterFlowTheme.of(context).primary,
+                 checkColor: FlutterFlowTheme.of(context).info,
+                 dense: false,
+                 controlAffinity: ListTileControlAffinity.trailing,
+               ),
+             ),
+             Theme(
+               data: ThemeData(
+                 checkboxTheme: CheckboxThemeData(
+                   visualDensity: VisualDensity.compact,
+                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                 ),
+                 unselectedWidgetColor: FlutterFlowTheme.of(context).secondaryText,
+               ),
+               child: CheckboxListTile(
+                 value: _model.checkboxListTileValue4 ??= AlarmSetting[4],
+                 onChanged: (newValue) async {
+                   if(newValue != null) AlarmSetting[4] = newValue;
+                   setState(() => _model.checkboxListTileValue4 = newValue!);
+                 },
+                 title: Text(
+                   '60분 전 알람',
+                   style: FlutterFlowTheme.of(context).titleLarge.override(
+                     fontFamily: 'Outfit',
+                     fontSize: 17.0,
+                     letterSpacing: 0.0,
+                   ),
+                 ),
+                 tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+                 activeColor: FlutterFlowTheme.of(context).primary,
+                 checkColor: FlutterFlowTheme.of(context).info,
+                 dense: false,
+                 controlAffinity: ListTileControlAffinity.trailing,
+               ),
+             ),
+           ],
+         )
         ],
       ),
     );
