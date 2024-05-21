@@ -1,26 +1,50 @@
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_button_tabbar.dart';
-import '/flutter_flow/flutter_flow_calendar.dart';
-import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:share_plus/share_plus.dart';
 
 import 'package:mud_safety/get_Info/get_tide.dart';
 
-class TideDataCard extends StatelessWidget {
+class TideDataCard extends StatefulWidget {
   MaximumMinimumTideData TideData = MaximumMinimumTideData();
   int index = 0;
 
   TideDataCard({required this.TideData, required this.index});
+
+  @override
+  _TideDataCardState createState() => _TideDataCardState();
+}
+
+class _TideDataCardState extends State<TideDataCard> {
+  final animationsMap = <String, AnimationInfo>{};
+
+  @override
+  void initState() {
+    super.initState();
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: (200*widget.index).ms,
+            duration: 600.0.ms,
+            begin: Offset(-50.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: (200*widget.index).ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +96,7 @@ class TideDataCard extends StatelessWidget {
                         .fromSTEB(4,
                         0, 0, 0),
                     child: Text(
-                      TideData.TideState[index],
+                      widget.TideData.TideState[widget.index],
                       style: FlutterFlowTheme
                           .of(context)
                           .headlineSmall
@@ -105,7 +129,7 @@ class TideDataCard extends StatelessWidget {
                           child: Card(
                             clipBehavior:
                             Clip.antiAliasWithSaveLayer,
-                            color: TideData.TideState[index] == '최대 조위' ? FlutterFlowTheme.of(context).accent3:FlutterFlowTheme.of(context).accent1,
+                            color: widget.TideData.TideState[widget.index] == '최대 조위' ? FlutterFlowTheme.of(context).accent3:FlutterFlowTheme.of(context).accent1,
                             elevation: 0,
                             shape:
                             RoundedRectangleBorder(
@@ -122,7 +146,7 @@ class TideDataCard extends StatelessWidget {
                                   8,
                                   4),
                               child: Text(
-                                TideData.TideTime[index],
+                                widget.TideData.TideTime[widget.index],
                                 style: FlutterFlowTheme.of(
                                     context)
                                     .bodyMedium
@@ -130,7 +154,7 @@ class TideDataCard extends StatelessWidget {
                                   fontFamily:
                                   'Plus Jakarta Sans',
                                   color:
-                                  TideData.TideState[index] == '최대 조위' ? FlutterFlowTheme.of(context).tertiary : FlutterFlowTheme.of(context).primary,
+                                  widget.TideData.TideState[widget.index] == '최대 조위' ? FlutterFlowTheme.of(context).tertiary : FlutterFlowTheme.of(context).primary,
                                   fontSize:
                                   17,
                                   letterSpacing:
@@ -141,7 +165,7 @@ class TideDataCard extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          TideData.TideVal[index],
+                          widget.TideData.TideVal[widget.index],
                           style: FlutterFlowTheme.of(
                               context)
                               .bodySmall
@@ -182,7 +206,7 @@ class TideDataCard extends StatelessWidget {
                 AlignmentDirectional(
                     0, 0),
                 child: Icon(
-                  TideData.TideState[index] == '최대 조위' ? Icons.arrow_upward : Icons.arrow_downward,
+                  widget.TideData.TideState[widget.index] == '최대 조위' ? Icons.arrow_upward : Icons.arrow_downward,
                   color:
                   FlutterFlowTheme.of(
                       context)
@@ -193,7 +217,9 @@ class TideDataCard extends StatelessWidget {
             ],
           ),
         ),
-      ),
+      ).animateOnPageLoad(animationsMap[
+      'containerOnPageLoadAnimation'
+      ]!),
     );
   }
 }
