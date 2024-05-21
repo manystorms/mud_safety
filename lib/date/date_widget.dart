@@ -53,6 +53,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
     super.initState();
     _model = createModel(context, () => DateModel());
     resetTideData();
+    showNotificationTimeSetting('test', 'a', 3);
 
     _model.tabBarController = TabController(
       vsync: this,

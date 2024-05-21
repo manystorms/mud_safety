@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.BAROMETER" />
 
     <application
-        android:label="mud_safety"
+        android:label="골든 타임 세이버"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:minSdkVersion="30">
@@ -16,7 +16,9 @@
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true">
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues

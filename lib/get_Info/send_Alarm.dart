@@ -5,7 +5,7 @@ import 'package:timezone/timezone.dart' as tz;
 final notifications = FlutterLocalNotificationsPlugin();
 
 initNotification() async {
-  var androidSetting = AndroidInitializationSettings('favicon');
+  var androidSetting = AndroidInitializationSettings('main_icon');
 
   var iosSetting = DarwinInitializationSettings(
     requestAlertPermission: true,

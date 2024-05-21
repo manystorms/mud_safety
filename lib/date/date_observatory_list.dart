@@ -17,7 +17,10 @@ class Observatory_list {
     int res = 0; double res_d = pow(latitude-Obslatitude[0])+pow(longitude-Obslongitude[0]);
     for(int i = 0; i < name.length; i++) {
       double d = pow(latitude-Obslatitude[i])+pow(longitude-Obslongitude[i]);
-      if(d < res_d) res = i;
+      if(res_d > d) {
+        res = i;
+        res_d = d;
+      }
     }
     return name[res];
   }

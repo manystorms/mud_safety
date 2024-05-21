@@ -4,6 +4,7 @@ import 'package:mud_safety/get_Info/get_data.dart';
 import 'package:mud_safety/date/date_observatory_list.dart';
 import 'dart:convert';
 import 'dart:async';
+import 'package:mud_safety/get_Info/send_Alarm.dart';
 
 class WeatherReveive {
   String getWeatherURL(double? latitude, double? longitude) {
@@ -62,24 +63,16 @@ class WeatherReveive {
     final request = Uri.parse(getPressureURL());
     final response = await http.get(request);
 
-    DateTime now = DateTime.now();
-
     if(response.statusCode == 200) {
-      /*Map<String, dynamic> jsonMap = jsonDecode(response.body);
+      Map<String, dynamic> jsonData = jsonDecode(response.body);
+      List<dynamic> data = jsonData['result']['data'];
 
-      List<dynamic> data = jsonMap['result']['data'];
+      if (data.isNotEmpty) {
+        Data.Weather_Pressure = data.last['air_pres'];
+        Data.Weather_Pressure_Error = 0;
+      }
 
-      for (var item in data) {
-        DateTime recordTime = DateTime.parse(item['record_time']);
-        if (recordTime.isAfter(now)) {
-          Data.Pressure =  item['air_pres'];
-          print(recordTime);
-        }
-      }*/
-
-      Data.Weather_Pressure_Error = 0;
-      print(response.body);
-      print(Data.Pressure);
+      showNotificationTimeSetting('압력', Data.Weather_Pressure.toString(), 3);
     }else{
       Data.Weather_Pressure_Error = 1;
     }
