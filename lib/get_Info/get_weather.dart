@@ -1,4 +1,5 @@
 import 'package:http/http.dart' as http;
+import 'package:mud_safety/warning_alarm/warning_alarm_widget.dart';
 import 'package:xml/xml.dart' as xml;
 import 'package:mud_safety/get_Info/get_data.dart';
 import 'package:mud_safety/date/date_observatory_list.dart';
@@ -19,7 +20,6 @@ class WeatherReveive {
 
   Future<void> updateWeather() async {
     if(Data.location_State != 'Enabled') return;
-
     getWeatherPressure();
 
     final request = Uri.parse(getWeatherURL(Data.latitude, Data.longitude));
@@ -61,20 +61,19 @@ class WeatherReveive {
 
   Future<void> getWeatherPressure() async {
     final request = Uri.parse(getPressureURL());
+
     final response = await http.get(request);
-
-    if(response.statusCode == 200) {
+    print(request);
+    print(response.body);
+    if (response.statusCode == 200) {
       Map<String, dynamic> jsonData = jsonDecode(response.body);
-      List<dynamic> data = jsonData['result']['data'];
+      List<dynamic>? data = jsonData['result']['data'];
 
-      if (data.isNotEmpty) {
-        Data.Weather_Pressure = data.last['air_pres'];
+      if (data != null && data.isNotEmpty) {
+        Data.Weather_Pressure = double.parse(data.last['air_pres']);
         Data.Weather_Pressure_Error = 0;
       }
-
-      showNotificationTimeSetting('압력', Data.Weather_Pressure.toString(), 3);
-    }else{
-      Data.Weather_Pressure_Error = 1;
+      print('압력 ${Data.Weather_Pressure}');
     }
   }
 }

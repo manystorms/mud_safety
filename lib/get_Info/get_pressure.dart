@@ -19,12 +19,12 @@ void PressureReceive(){
 
       double Height = (Rv*Data.Weather_Temperature/g)*log(Data.Weather_Pressure/Data.Pressure);
 
-      String StrHeight = Height.toStringAsFixed(4);
+      String StrHeight = Height.toStringAsFixed(3);
       Data.Height = double.parse(StrHeight);
 
       if(Data.obs_Graph_x.isNotEmpty) {
         double Tide_Gap = Data.Height-Data.obs_Graph_y[0]/100;
-        String StrTide_Gap = Tide_Gap.toStringAsFixed(4);
+        String StrTide_Gap = Tide_Gap.toStringAsFixed(3);
         Data.Tide_Gap = double.parse(StrTide_Gap);
       }
     }

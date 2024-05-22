@@ -17,7 +17,7 @@ void updateSettingTime() async {
   }
   if(drownTime == null) drownTime = Data.obs_Graph_x.last;
 
-  RemainingTime = drownTime-getUnixTime()-60*30;
+  RemainingTime = drownTime-getUnixTime();
   Data.AlertTime = drownTime;
 
   if(AlarmOn == true) {

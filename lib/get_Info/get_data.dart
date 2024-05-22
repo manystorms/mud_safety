@@ -86,8 +86,8 @@ class ReceiveData {
   List<int> obs_x = [0];
   List<double> obs_y = [0];
 
-  double Weather_Pressure = 0;
-  int Weather_Pressure_Error = 1;
+  double Weather_Pressure = 1020;
+  int Weather_Pressure_Error = 0;
 
   double Weather_Temperature = 0;
   double Weather_Humidity = 65;

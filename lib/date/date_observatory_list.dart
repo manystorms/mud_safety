@@ -22,7 +22,7 @@ class Observatory_list {
         res_d = d;
       }
     }
-    return name[res];
+    return ObsCode[res];
   }
 
   List<String> name = [
