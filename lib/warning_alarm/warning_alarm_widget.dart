@@ -127,9 +127,10 @@ class _WarningAlarmWidgetState extends State<WarningAlarmWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 0),
                   child: Text(
                     widget.Content,
+                    textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Plus Jakarta Sans',
-                      fontSize: 40,
+                      fontSize: 28,
                       letterSpacing: 0,
                     ),
                   ),

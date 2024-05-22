@@ -54,6 +54,11 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
     _TimerBar = settingBar(time.toDouble(), 0, 3600);
     TimeCheck(context, time);
 
+    if(time < 0) {
+      _TimerWidget = '--:--:--';
+      return;
+    }
+
     final Hour = time~/3600; time -= Hour*3600;
     final Min = time~/60; time -= Min*60;
     final Sec = time;

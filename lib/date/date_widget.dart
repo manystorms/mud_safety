@@ -47,7 +47,7 @@ class _DateWidgetState extends State<DateWidget> with TickerProviderStateMixin {
     await Future.delayed(Duration(seconds: 3));
     print('a');
 
-    showWarningAlarm(context, 'test');
+    showWarningAlarm(context, '지금 즉시 갯벌에서 나가야 해요!');
   }
 
   @override
