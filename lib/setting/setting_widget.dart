@@ -138,7 +138,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                 setState(() => _model.switchListTileValue1 = newValue!);
               },
               title: Text(
-                '푸쉬 알림',
+                '알림',
                 style: FlutterFlowTheme.of(context).bodyLarge.override(
                   fontFamily: 'Plus Jakarta Sans',
                   letterSpacing: 0.0,
